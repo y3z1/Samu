@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -32,159 +33,232 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,229,255,0.04) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(176,106,255,0.04) 0%,transparent 60%);pointer-events:none;}
 .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;position:relative;}
 .brand{}
-.brand-codename{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:5px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;}
-.brand-codename::before{content:'// ';opacity:0.4;}
-.brand-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,10vw,96px);line-height:0.85;letter-spacing:3px;}
-.brand-title .t1{color:var(--text);}
-.brand-title .t2{color:var(--cyan);text-shadow:0 0 30px rgba(0,229,255,0.4);}
-.brand-subtitle{margin-top:10px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted2);}
-.brand-subtitle em{color:var(--gold);font-style:normal;}
-.brand-meaning{margin-top:8px;font-size:12px;color:var(--muted);line-height:1.6;max-width:340px;}
-.brand-meaning span{color:var(--cyan);}
+.brand-codename{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:var(–cyan);letter-spacing:5px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;}
+.brand-codename::before{content:’// ’;opacity:0.4;}
+.brand-title{font-family:‘Bebas Neue’,cursive;font-size:clamp(52px,10vw,96px);line-height:0.85;letter-spacing:3px;}
+.brand-title .t1{color:var(–text);}
+.brand-title .t2{color:var(–cyan);text-shadow:0 0 30px rgba(0,229,255,0.4);}
+.brand-subtitle{margin-top:10px;font-family:‘Share Tech Mono’,monospace;font-size:11px;letter-spacing:3px;color:var(–muted2);}
+.brand-subtitle em{color:var(–gold);font-style:normal;}
+.brand-meaning{margin-top:8px;font-size:12px;color:var(–muted);line-height:1.6;max-width:340px;}
+.brand-meaning span{color:var(–cyan);}
 .hero-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-top:8px;}
-.sync-indicator{display:flex;align-items:center;gap:6px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:1px;}
-.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);transition:all 0.3s;}
-.sync-dot.ok{background:var(--green);box-shadow:0 0 8px rgba(57,255,138,0.7);}
-.sync-dot.err{background:var(--red);}
+.sync-indicator{display:flex;align-items:center;gap:6px;font-family:‘Share Tech Mono’,monospace;font-size:10px;color:var(–muted2);letter-spacing:1px;}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:var(–muted);transition:all 0.3s;}
+.sync-dot.ok{background:var(–green);box-shadow:0 0 8px rgba(57,255,138,0.7);}
+.sync-dot.err{background:var(–red);}
 
 /* ── BUTTONS ── */
-.btn{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:9px 16px;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
-.btn-admin{background:rgba(176,106,255,0.1);color:var(--purple);border:1px solid rgba(176,106,255,0.3);}
+.btn{font-family:‘Share Tech Mono’,monospace;font-size:10px;letter-spacing:2px;padding:9px 16px;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
+.btn-admin{background:rgba(176,106,255,0.1);color:var(–purple);border:1px solid rgba(176,106,255,0.3);}
 .btn-admin:hover{background:rgba(176,106,255,0.2);}
-.btn-danger{background:rgba(255,61,107,0.1);color:var(--red);border:1px solid rgba(255,61,107,0.25);}
+.btn-danger{background:rgba(255,61,107,0.1);color:var(–red);border:1px solid rgba(255,61,107,0.25);}
 .btn-danger:hover{background:rgba(255,61,107,0.2);}
-.btn-success{background:rgba(57,255,138,0.1);color:var(--green);border:1px solid rgba(57,255,138,0.3);}
+.btn-success{background:rgba(57,255,138,0.1);color:var(–green);border:1px solid rgba(57,255,138,0.3);}
 .btn-success:hover{background:rgba(57,255,138,0.2);}
 .btn-sm{padding:6px 12px;font-size:9px;}
 
 /* ── DIVIDER ── */
-.hero-divider{height:1px;background:linear-gradient(90deg,var(--cyan),rgba(176,106,255,0.5),transparent);margin:20px 0;max-width:900px;margin-left:auto;margin-right:auto;}
+.hero-divider{height:1px;background:linear-gradient(90deg,var(–cyan),rgba(176,106,255,0.5),transparent);margin:20px 0;max-width:900px;margin-left:auto;margin-right:auto;}
 
 /* ── APP BODY ── */
 .app{max-width:900px;margin:0 auto;padding:0 16px 80px;}
 
 /* ── GLOBAL PROGRESS ── */
-.global-progress{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px 20px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.global-progress{background:var(–surface);border:1px solid var(–border);border-radius:6px;padding:18px 20px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
 .gp-stats{display:flex;gap:24px;flex-wrap:wrap;}
 .gp-stat{text-align:center;}
-.gp-stat-val{font-family:'Bebas Neue',cursive;font-size:38px;line-height:1;color:var(--cyan);text-shadow:0 0 16px rgba(0,229,255,0.4);}
-.gp-stat-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-top:2px;}
+.gp-stat-val{font-family:‘Bebas Neue’,cursive;font-size:38px;line-height:1;color:var(–cyan);text-shadow:0 0 16px rgba(0,229,255,0.4);}
+.gp-stat-label{font-family:‘Share Tech Mono’,monospace;font-size:9px;letter-spacing:2px;color:var(–muted2);text-transform:uppercase;margin-top:2px;}
 .gp-bar-wrap{flex:1;min-width:160px;}
-.gp-bar-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;}
-.gp-bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
-.gp-bar-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:4px;transition:width 0.8s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 10px rgba(0,229,255,0.35);}
+.gp-bar-label{font-family:‘Share Tech Mono’,monospace;font-size:9px;letter-spacing:2px;color:var(–muted2);text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;}
+.gp-bar-track{height:8px;background:var(–border);border-radius:4px;overflow:hidden;}
+.gp-bar-fill{height:100%;background:linear-gradient(90deg,var(–cyan),var(–green));border-radius:4px;transition:width 0.8s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 10px rgba(0,229,255,0.35);}
 
 /* ── FILTER TABS ── */
 .filter-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
-.tab{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:7px 14px;border-radius:3px;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
-.tab:hover{border-color:var(--border-bright);color:var(--text);}
-.tab.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,0.06);}
+.tab{font-family:‘Share Tech Mono’,monospace;font-size:10px;letter-spacing:2px;padding:7px 14px;border-radius:3px;border:1px solid var(–border);background:transparent;color:var(–muted2);cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
+.tab:hover{border-color:var(–border-bright);color:var(–text);}
+.tab.active{border-color:var(–cyan);color:var(–cyan);background:rgba(0,229,255,0.06);}
 
 /* ── MISSION CARDS ── */
 .missions-grid{display:flex;flex-direction:column;gap:10px;}
-.mission-card{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color 0.2s;animation:slideIn 0.3s ease both;}
+.mission-card{background:var(–card);border:1px solid var(–border);border-radius:6px;overflow:hidden;transition:border-color 0.2s;animation:slideIn 0.3s ease both;}
 @keyframes slideIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.mission-card:hover{border-color:var(--border-bright);}
+.mission-card:hover{border-color:var(–border-bright);}
 .mission-card.completed{border-color:rgba(57,255,138,0.2);background:rgba(57,255,138,0.015);}
 .mission-card.completed .mission-title{text-decoration:line-through;opacity:0.55;}
 .mission-inner{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;}
-.mission-check{width:28px;height:28px;border-radius:4px;border:2px solid var(--border-bright);background:transparent;cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s;color:transparent;}
-.mission-check:hover{border-color:var(--green);}
-.mission-card.completed .mission-check{background:rgba(57,255,138,0.12);border-color:var(--green);color:var(--green);}
-.mission-content{flex:1;}
+.mission-check{width:28px;height:28px;border-radius:4px;border:2px solid var(–border-bright);background:transparent;cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s;color:transparent;}
+.mission-check:hover{border-color:var(–green);}
+.mission-card.completed .mission-check{background:rgba(57,255,138,0.12);border-color:var(–green);color:var(–green);}
+.mission-content{flex:1;min-width:0;}
 .mission-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap;}
-.mission-cat{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:2px 7px;border-radius:2px;text-transform:uppercase;}
-.cat-mates  {background:rgba(255,107,53,0.1);color:var(--orange);border:1px solid rgba(255,107,53,0.2);}
-.cat-socials{background:rgba(0,229,255,0.08);color:var(--cyan);border:1px solid rgba(0,229,255,0.15);}
-.cat-lengua {background:rgba(255,214,0,0.08);color:var(--yellow);border:1px solid rgba(255,214,0,0.2);}
-.cat-ingles {background:rgba(57,255,138,0.08);color:var(--green);border:1px solid rgba(57,255,138,0.2);}
-.cat-efisica{background:rgba(176,106,255,0.1);color:var(--purple);border:1px solid rgba(176,106,255,0.2);}
-.cat-profe  {background:rgba(255,61,107,0.1);color:var(--red);border:1px solid rgba(255,61,107,0.2);}
-.cat-general{background:rgba(255,255,255,0.04);color:var(--muted2);border:1px solid var(--border);}
-.cat-social {background:rgba(255,201,60,0.08);color:var(--gold);border:1px solid rgba(255,201,60,0.2);}
-.mission-xp{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--yellow);letter-spacing:1px;margin-left:auto;}
-.mission-title{font-size:15px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:4px;}
-.mission-desc{font-size:13px;color:var(--muted2);line-height:1.55;font-weight:400;}
-.mission-completed-by{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);margin-top:6px;letter-spacing:1px;opacity:0.7;}
+.mission-cat{font-family:‘Share Tech Mono’,monospace;font-size:9px;letter-spacing:2px;padding:2px 7px;border-radius:2px;text-transform:uppercase;}
+.cat-mates  {background:rgba(255,107,53,0.1);color:var(–orange);border:1px solid rgba(255,107,53,0.2);}
+.cat-socials{background:rgba(0,229,255,0.08);color:var(–cyan);border:1px solid rgba(0,229,255,0.15);}
+.cat-lengua {background:rgba(255,214,0,0.08);color:var(–yellow);border:1px solid rgba(255,214,0,0.2);}
+.cat-ingles {background:rgba(57,255,138,0.08);color:var(–green);border:1px solid rgba(57,255,138,0.2);}
+.cat-efisica{background:rgba(176,106,255,0.1);color:var(–purple);border:1px solid rgba(176,106,255,0.2);}
+.cat-profe  {background:rgba(255,61,107,0.1);color:var(–red);border:1px solid rgba(255,61,107,0.2);}
+.cat-general{background:rgba(255,255,255,0.04);color:var(–muted2);border:1px solid var(–border);}
+.cat-social {background:rgba(255,201,60,0.08);color:var(–gold);border:1px solid rgba(255,201,60,0.2);}
+.mission-xp{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–yellow);letter-spacing:1px;margin-left:auto;}
+.mission-title{font-size:15px;font-weight:600;color:var(–text);line-height:1.4;margin-bottom:4px;}
+.mission-desc{font-size:13px;color:var(–muted2);line-height:1.55;font-weight:400;}
+.mission-completed-by{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–green);margin-top:6px;letter-spacing:1px;opacity:0.7;}
+
+/* ── EDIT BUTTON on card ── */
+.mission-edit-btn{
+flex-shrink:0;
+width:28px;height:28px;
+border-radius:4px;
+border:1px solid var(–border-bright);
+background:transparent;
+color:var(–muted2);
+cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+font-size:13px;
+transition:all 0.18s;
+margin-top:2px;
+opacity:0;
+pointer-events:none;
+}
+.mission-card:hover .mission-edit-btn{opacity:1;pointer-events:auto;}
+.mission-edit-btn:hover{
+border-color:var(–purple);
+color:var(–purple);
+background:rgba(176,106,255,0.1);
+}
+
+/* ── EDIT MODAL ── */
+.edit-overlay{
+position:fixed;inset:0;
+background:rgba(0,0,0,0.82);
+backdrop-filter:blur(7px);
+z-index:3000;
+display:none;align-items:center;justify-content:center;
+padding:20px;
+}
+.edit-overlay.open{display:flex;}
+.edit-panel{
+background:var(–surface);
+border:1px solid var(–border-bright);
+border-top:3px solid var(–purple);
+border-radius:8px;
+padding:26px 24px;
+width:100%;max-width:480px;
+animation:panelIn 0.22s ease;
+}
+@keyframes panelIn{from{opacity:0;transform:scale(0.97) translateY(-10px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.edit-panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.edit-panel-title{font-family:‘Bebas Neue’,cursive;font-size:26px;color:var(–purple);letter-spacing:1px;}
+.edit-panel-id{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–muted);letter-spacing:2px;margin-top:2px;}
+.edit-close{background:none;border:none;color:var(–muted2);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:3px;transition:color 0.15s;}
+.edit-close:hover{color:var(–text);}
+.edit-form-group{margin-bottom:14px;}
+.edit-form-label{font-family:‘Share Tech Mono’,monospace;font-size:10px;letter-spacing:2px;color:var(–muted2);text-transform:uppercase;margin-bottom:6px;display:block;}
+.edit-form-input,.edit-form-textarea{
+width:100%;
+background:var(–card);
+border:1px solid var(–border-bright);
+border-radius:4px;
+color:var(–text);
+font-family:‘Rajdhani’,sans-serif;
+font-size:14px;
+padding:9px 12px;
+outline:none;
+transition:border-color 0.15s;
+}
+.edit-form-input:focus,.edit-form-textarea:focus{border-color:var(–purple);}
+.edit-form-textarea{min-height:90px;resize:vertical;}
+.edit-xp-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.edit-xp-hint{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–muted);letter-spacing:1px;margin-top:4px;}
+.edit-actions{display:flex;gap:8px;margin-top:20px;}
+.edit-actions .btn{flex:1;}
+.edit-saving{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:var(–muted2);letter-spacing:2px;display:flex;align-items:center;gap:6px;}
+.edit-saving-dot{width:6px;height:6px;border-radius:50%;background:var(–purple);animation:pulse 0.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.3;transform:scale(0.7);}}
 
 /* ── LOADING ── */
 .loading-state{text-align:center;padding:48px 20px;}
-.loading-spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px;}
+.loading-spinner{width:32px;height:32px;border:2px solid var(–border);border-top-color:var(–cyan);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.loading-text{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted2);}
-.empty-state{text-align:center;padding:48px 20px;color:var(--muted);}
+.loading-text{font-family:‘Share Tech Mono’,monospace;font-size:11px;letter-spacing:2px;color:var(–muted2);}
+.empty-state{text-align:center;padding:48px 20px;color:var(–muted);}
 .empty-state .e-icon{font-size:36px;margin-bottom:12px;opacity:0.4;}
-.empty-state .e-text{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:2px;}
+.empty-state .e-text{font-family:‘Share Tech Mono’,monospace;font-size:12px;letter-spacing:2px;}
 
 /* ── WHO PANEL ── */
 .who-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;}
 .who-overlay.open{display:flex;}
-.who-panel{background:var(--surface);border:1px solid var(--border-bright);border-top:3px solid var(--cyan);border-radius:8px;padding:28px 24px;max-width:340px;width:100%;animation:panelIn 0.2s ease;}
-@keyframes panelIn{from{opacity:0;transform:scale(0.97) translateY(-10px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.who-title{font-family:'Bebas Neue',cursive;font-size:26px;color:var(--cyan);margin-bottom:6px;}
-.who-sub{font-size:13px;color:var(--muted2);margin-bottom:20px;line-height:1.5;}
+.who-panel{background:var(–surface);border:1px solid var(–border-bright);border-top:3px solid var(–cyan);border-radius:8px;padding:28px 24px;max-width:340px;width:100%;animation:panelIn 0.2s ease;}
+.who-title{font-family:‘Bebas Neue’,cursive;font-size:26px;color:var(–cyan);margin-bottom:6px;}
+.who-sub{font-size:13px;color:var(–muted2);margin-bottom:20px;line-height:1.5;}
 .who-buttons{display:flex;flex-direction:column;gap:8px;}
-.who-btn{padding:12px 16px;border-radius:4px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:1px solid;transition:all 0.15s;text-align:left;display:flex;align-items:center;gap:10px;}
-.who-btn-samuel{background:rgba(57,255,138,0.08);color:var(--green);border-color:rgba(57,255,138,0.25);}
-.who-btn-papa  {background:rgba(0,229,255,0.08);color:var(--cyan);border-color:rgba(0,229,255,0.25);}
-.who-btn-mama  {background:rgba(255,214,0,0.08);color:var(--yellow);border-color:rgba(255,214,0,0.25);}
-.who-btn-felipe{background:rgba(176,106,255,0.08);color:var(--purple);border-color:rgba(176,106,255,0.25);}
+.who-btn{padding:12px 16px;border-radius:4px;font-family:‘Rajdhani’,sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:1px solid;transition:all 0.15s;text-align:left;display:flex;align-items:center;gap:10px;}
+.who-btn-samuel{background:rgba(57,255,138,0.08);color:var(–green);border-color:rgba(57,255,138,0.25);}
+.who-btn-papa  {background:rgba(0,229,255,0.08);color:var(–cyan);border-color:rgba(0,229,255,0.25);}
+.who-btn-mama  {background:rgba(255,214,0,0.08);color:var(–yellow);border-color:rgba(255,214,0,0.25);}
+.who-btn-felipe{background:rgba(176,106,255,0.08);color:var(–purple);border-color:rgba(176,106,255,0.25);}
 .who-btn:hover{filter:brightness(1.2);transform:translateX(3px);}
 
 /* ── ADMIN PANEL ── */
 .panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:20px 16px;overflow-y:auto;}
 .panel-overlay.open{display:flex;}
-.panel{background:var(--surface);border:1px solid var(--border-bright);border-top:3px solid var(--purple);border-radius:8px;width:100%;max-width:560px;padding:24px;animation:panelIn 0.25s ease;margin:auto;}
+.panel{background:var(–surface);border:1px solid var(–border-bright);border-top:3px solid var(–purple);border-radius:8px;width:100%;max-width:560px;padding:24px;animation:panelIn 0.25s ease;margin:auto;}
 .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
-.panel-title{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--purple);letter-spacing:1px;}
-.panel-close{background:none;border:none;color:var(--muted2);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:3px;transition:color 0.15s;}
-.panel-close:hover{color:var(--text);}
+.panel-title{font-family:‘Bebas Neue’,cursive;font-size:28px;color:var(–purple);letter-spacing:1px;}
+.panel-close{background:none;border:none;color:var(–muted2);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:3px;transition:color 0.15s;}
+.panel-close:hover{color:var(–text);}
 .form-group{margin-bottom:14px;}
-.form-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:6px;display:block;}
-.form-input,.form-select,.form-textarea{width:100%;background:var(--card);border:1px solid var(--border-bright);border-radius:4px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;padding:9px 12px;outline:none;transition:border-color 0.15s;}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--purple);}
+.form-label{font-family:‘Share Tech Mono’,monospace;font-size:10px;letter-spacing:2px;color:var(–muted2);text-transform:uppercase;margin-bottom:6px;display:block;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(–card);border:1px solid var(–border-bright);border-radius:4px;color:var(–text);font-family:‘Rajdhani’,sans-serif;font-size:14px;padding:9px 12px;outline:none;transition:border-color 0.15s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(–purple);}
 .form-textarea{min-height:80px;resize:vertical;}
-.form-select option{background:var(--card);}
+.form-select option{background:var(–card);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-@media(max-width:400px){.form-row{grid-template-columns:1fr;}}
-.panel-divider{height:1px;background:var(--border);margin:20px 0;}
-.panel-subtitle{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:12px;}
+@media(max-width:400px){.form-row{grid-template-columns:1fr;}.edit-xp-row{grid-template-columns:1fr;}}
+.panel-divider{height:1px;background:var(–border);margin:20px 0;}
+.panel-subtitle{font-family:‘Share Tech Mono’,monospace;font-size:10px;letter-spacing:2px;color:var(–muted2);text-transform:uppercase;margin-bottom:12px;}
 .admin-mission-list{display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto;}
-.admin-mission-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:4px;font-size:13px;}
+.admin-mission-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(–card);border:1px solid var(–border);border-radius:4px;font-size:13px;}
 .admin-mission-item .ami-title{flex:1;}
-.admin-mission-item .ami-cat{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted2);}
+.admin-mission-item .ami-cat{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–muted2);}
 
 /* ── WEEKLY SUMMARY ── */
-.weekly-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:4px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.weekly-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
-.weekly-next{font-size:12px;color:var(--muted2);}
+.weekly-box{background:var(–surface);border:1px solid var(–border);border-left:3px solid var(–gold);border-radius:4px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.weekly-label{font-family:‘Share Tech Mono’,monospace;font-size:10px;letter-spacing:2px;color:var(–gold);text-transform:uppercase;}
+.weekly-next{font-size:12px;color:var(–muted2);}
 
 /* ── CELEBRATE ── */
 .celebrate-overlay{position:fixed;inset:0;z-index:5000;pointer-events:none;display:none;}
 .celebrate-overlay.active{display:block;}
-.celebrate-message{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.5);background:var(--surface);border:2px solid var(--green);border-radius:12px;padding:28px 36px;text-align:center;z-index:5001;pointer-events:none;opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 60px rgba(57,255,138,0.3);max-width:360px;width:90%;}
+.celebrate-message{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.5);background:var(–surface);border:2px solid var(–green);border-radius:12px;padding:28px 36px;text-align:center;z-index:5001;pointer-events:none;opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 60px rgba(57,255,138,0.3);max-width:360px;width:90%;}
 .celebrate-message.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
 .cel-icon{font-size:48px;margin-bottom:12px;}
-.cel-title{font-family:'Bebas Neue',cursive;font-size:36px;color:var(--green);letter-spacing:2px;text-shadow:0 0 20px rgba(57,255,138,0.5);}
-.cel-who{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:2px;margin-top:6px;}
-.cel-sub{font-size:13px;color:var(--muted2);margin-top:8px;line-height:1.55;}
+.cel-title{font-family:‘Bebas Neue’,cursive;font-size:36px;color:var(–green);letter-spacing:2px;text-shadow:0 0 20px rgba(57,255,138,0.5);}
+.cel-who{font-family:‘Share Tech Mono’,monospace;font-size:11px;color:var(–cyan);letter-spacing:2px;margin-top:6px;}
+.cel-sub{font-size:13px;color:var(–muted2);margin-top:8px;line-height:1.55;}
 .confetti-piece{position:fixed;border-radius:2px;pointer-events:none;z-index:5000;animation:confettiFall linear forwards;}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
 
 /* ── TOAST ── */
-.toast{position:fixed;bottom:24px;right:20px;background:var(--surface);border:1px solid var(--border-bright);border-left:3px solid var(--green);border-radius:4px;padding:12px 16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--green);letter-spacing:1px;z-index:9000;transform:translateX(120%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);max-width:300px;}
+.toast{position:fixed;bottom:24px;right:20px;background:var(–surface);border:1px solid var(–border-bright);border-left:3px solid var(–green);border-radius:4px;padding:12px 16px;font-family:‘Share Tech Mono’,monospace;font-size:11px;color:var(–green);letter-spacing:1px;z-index:9000;transform:translateX(120%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);max-width:300px;}
 .toast.show{transform:translateX(0);}
-.toast.error{border-left-color:var(--red);color:var(--red);}
-.toast.info{border-left-color:var(--cyan);color:var(--cyan);}
+.toast.error{border-left-color:var(–red);color:var(–red);}
+.toast.info{border-left-color:var(–cyan);color:var(–cyan);}
 
 ::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:3px;}
+::-webkit-scrollbar-track{background:var(–bg);}
+::-webkit-scrollbar-thumb{background:var(–border-bright);border-radius:3px;}
 </style>
+
 </head>
 <body>
 
 <!-- HERO -->
+
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-top">
@@ -212,9 +286,11 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 <div class="hero-divider"></div>
 
 <!-- APP BODY -->
+
 <div class="app">
 
   <!-- WEEKLY SUMMARY BAR -->
+
   <div class="weekly-box">
     <div>
       <div class="weekly-label">📊 Resumen semanal</div>
@@ -224,6 +300,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   </div>
 
   <!-- GLOBAL PROGRESS -->
+
   <div class="global-progress">
     <div class="gp-stats">
       <div class="gp-stat"><div class="gp-stat-val" id="stat-completed">0</div><div class="gp-stat-label">Completadas</div></div>
@@ -237,6 +314,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   </div>
 
   <!-- FILTER TABS -->
+
   <div class="filter-tabs">
     <button class="tab active" data-filter="all"       onclick="setFilter('all',this)">Todas</button>
     <button class="tab"        data-filter="pending"   onclick="setFilter('pending',this)">Pendientes</button>
@@ -246,12 +324,14 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   </div>
 
   <!-- MISSIONS -->
+
   <div class="missions-grid" id="missions-grid">
     <div class="loading-state"><div class="loading-spinner"></div><div class="loading-text">Cargando misiones...</div></div>
   </div>
 </div>
 
 <!-- WHO -->
+
 <div class="who-overlay" id="who-overlay">
   <div class="who-panel">
     <div class="who-title">¿Quién completa?</div>
@@ -266,6 +346,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 </div>
 
 <!-- ADMIN -->
+
 <div class="panel-overlay" id="admin-overlay">
   <div class="panel">
     <div class="panel-header">
@@ -295,7 +376,52 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   </div>
 </div>
 
+<!-- EDIT MISSION MODAL -->
+
+<div class="edit-overlay" id="edit-overlay">
+  <div class="edit-panel">
+    <div class="edit-panel-header">
+      <div>
+        <div class="edit-panel-title">✏ Editar misión</div>
+        <div class="edit-panel-id" id="edit-mission-id"></div>
+      </div>
+      <button class="edit-close" onclick="closeEdit()">✕</button>
+    </div>
+
+```
+<div class="edit-form-group">
+  <label class="edit-form-label">Título *</label>
+  <input class="edit-form-input" id="edit-title" placeholder="Título de la misión" />
+</div>
+
+<div class="edit-form-group">
+  <label class="edit-form-label">Descripción</label>
+  <textarea class="edit-form-textarea" id="edit-desc" placeholder="Descripción detallada de la misión..."></textarea>
+</div>
+
+<div class="edit-xp-row">
+  <div class="edit-form-group">
+    <label class="edit-form-label">XP</label>
+    <input class="edit-form-input" id="edit-xp" type="number" min="0" max="500" placeholder="50" />
+    <div class="edit-xp-hint">Entre 0 y 500 XP</div>
+  </div>
+  <div class="edit-form-group">
+    <label class="edit-form-label">XP actual</label>
+    <div id="edit-xp-current" style="font-family:'Bebas Neue',cursive;font-size:32px;color:var(--yellow);line-height:1.2;padding-top:4px;">—</div>
+  </div>
+</div>
+
+<div class="edit-actions">
+  <button class="btn" style="background:rgba(255,61,107,0.08);color:var(--muted2);border:1px solid var(--border-bright);" onclick="closeEdit()">Cancelar</button>
+  <button class="btn btn-admin" id="edit-save-btn" onclick="saveEdit()">💾 Guardar cambios</button>
+</div>
+```
+
+  </div>
+</div>
+
 <!-- CELEBRATE -->
+
 <div class="celebrate-overlay" id="celebrate-overlay">
   <div class="celebrate-message" id="celebrate-msg">
     <div class="cel-icon">🏆</div>
@@ -308,6 +434,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 <div class="toast" id="toast"></div>
 
 <!-- ── FIREBASE + APP ── -->
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
 import { getFirestore, collection, doc, onSnapshot, setDoc, deleteDoc, getDocs, writeBatch, query, orderBy }
@@ -381,6 +508,7 @@ const MSGS = [
 let missions = [];
 let currentFilter = 'all';
 let pendingId = null;
+let editingId = null;
 
 // ── TELEGRAM ────────────────────────────────────────────
 async function tgSend(text) {
@@ -461,7 +589,6 @@ ${pending || 'Sin misiones pendientes. ¡Increíble!'}
   );
   toast('Resumen semanal enviado a Telegram ✓', false, 'info');
 
-  // Save next send date (+7 days)
   const next = new Date();
   next.setDate(next.getDate()+7);
   localStorage.setItem('samu_next_weekly', next.toISOString());
@@ -476,9 +603,7 @@ function updateWeeklyLabel() {
   const now  = new Date();
   const diff = Math.ceil((next-now)/(1000*60*60*24));
   el.textContent = diff > 0 ? `Próximo envío automático en ${diff} día${diff===1?'':'s'}` : 'Listo para enviar';
-  if (diff <= 0) {
-    sendWeeklySummary();
-  }
+  if (diff <= 0) sendWeeklySummary();
 }
 
 // ── SYNC STATUS ──────────────────────────────────────────
@@ -545,6 +670,7 @@ function render() {
             ${m.desc?`<div class="mission-desc">${esc(m.desc)}</div>`:''}
             ${m.completed&&m.completedBy?`<div class="mission-completed-by">✓ ${esc(m.completedBy)}${m.completedAt?' · '+m.completedAt:''}</div>`:''}
           </div>
+          <button class="mission-edit-btn" title="Editar misión" onclick="window.__openEdit('${m.id}')">✏</button>
         </div>
       </div>`).join('');
 
@@ -590,6 +716,59 @@ window.__confirmComplete = function(who) {
   celebrate(who);
 };
 
+// ── EDIT MISSION ─────────────────────────────────────────
+window.__openEdit = function(id) {
+  const m = missions.find(x=>x.id===id);
+  if(!m) return;
+  editingId = id;
+
+  document.getElementById('edit-title').value   = m.title || '';
+  document.getElementById('edit-desc').value    = m.desc  || '';
+  document.getElementById('edit-xp').value      = m.xp    || 0;
+  document.getElementById('edit-xp-current').textContent = '+' + (m.xp||0) + ' XP';
+  document.getElementById('edit-mission-id').textContent = '// ID: ' + id;
+
+  // Live XP preview
+  document.getElementById('edit-xp').oninput = function() {
+    document.getElementById('edit-xp-current').textContent = '+' + (parseInt(this.value)||0) + ' XP';
+  };
+
+  document.getElementById('edit-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('edit-title').focus(), 120);
+};
+
+window.__saveEdit = async function() {
+  if(!editingId) return;
+  const m = missions.find(x=>x.id===editingId);
+  if(!m) return;
+
+  const newTitle = document.getElementById('edit-title').value.trim();
+  if(!newTitle) { toast('El título no puede estar vacío.', true); return; }
+
+  const newDesc  = document.getElementById('edit-desc').value.trim();
+  const newXp    = parseInt(document.getElementById('edit-xp').value) || 0;
+
+  const btn = document.getElementById('edit-save-btn');
+  btn.innerHTML = '<span class="edit-saving"><span class="edit-saving-dot"></span> Guardando...</span>';
+  btn.disabled  = true;
+
+  try {
+    await setDoc(doc(db,"missions",editingId), { ...m, title: newTitle, desc: newDesc, xp: newXp });
+    closeEdit();
+    toast('Misión actualizada ✓', false, 'info');
+  } catch(e) {
+    toast('Error al guardar. Inténtalo de nuevo.', true);
+  } finally {
+    btn.innerHTML = '💾 Guardar cambios';
+    btn.disabled  = false;
+  }
+};
+
+window.__closeEdit = function() {
+  document.getElementById('edit-overlay').classList.remove('open');
+  editingId = null;
+};
+
 // ── ADD MISSION ──────────────────────────────────────────
 window.__add = async function() {
   const title=document.getElementById('f-title').value.trim();
@@ -612,7 +791,7 @@ window.__del = async function(id) {
 };
 
 window.__reset = async function() {
-  if(!confirm('¿Borrar todo y restaurar las 10 misiones originales?')) return;
+  if(!confirm('¿Borrar todo y restaurar las misiones originales?')) return;
   const snap=await getDocs(col);
   const b=writeBatch(db);
   snap.docs.forEach(d=>b.delete(d.ref));
@@ -671,17 +850,34 @@ window.__filter=function(f,btn){
 </script>
 
 <script>
-function setFilter(f,b){ window.__filter(f,b); }
-function confirmComplete(w){ window.__confirmComplete(w); }
-function addMission(){ window.__add(); }
-function resetAll(){ window.__reset(); }
-function openAdmin(){ document.getElementById('admin-overlay').classList.add('open'); }
-function closeAdmin(){ document.getElementById('admin-overlay').classList.remove('open'); }
-document.getElementById('admin-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('admin-overlay'))closeAdmin(); });
+function setFilter(f,b)        { window.__filter(f,b); }
+function confirmComplete(w)    { window.__confirmComplete(w); }
+function addMission()          { window.__add(); }
+function resetAll()            { window.__reset(); }
+function saveEdit()            { window.__saveEdit(); }
+function closeEdit()           { window.__closeEdit(); }
+function openAdmin()           { document.getElementById('admin-overlay').classList.add('open'); }
+function closeAdmin()          { document.getElementById('admin-overlay').classList.remove('open'); }
+
+document.getElementById('admin-overlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('admin-overlay')) closeAdmin();
+});
+document.getElementById('edit-overlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('edit-overlay')) closeEdit();
+});
 document.getElementById('celebrate-overlay').addEventListener('click',()=>{
   document.getElementById('celebrate-msg').classList.remove('show');
   document.getElementById('celebrate-overlay').classList.remove('active');
 });
+
+// Cerrar edit con Escape
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') {
+    if(document.getElementById('edit-overlay').classList.contains('open')) closeEdit();
+    if(document.getElementById('admin-overlay').classList.contains('open')) closeAdmin();
+  }
+});
 </script>
+
 </body>
 </html>
