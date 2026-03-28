@@ -129,6 +129,10 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   color:var(--purple);
   background:rgba(176,106,255,0.1);
 }
+/* Siempre visible en móvil (touch) */
+@media (hover: none) {
+  .mission-edit-btn{opacity:1;pointer-events:auto;color:var(--muted);}
+}
 
 /* ── EDIT MODAL ── */
 .edit-overlay{
