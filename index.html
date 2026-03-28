@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.A.M.U. · The Comeback</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080a0f;
+  --surface: #0f1119;
+  --card: #13161f;
+  --border: #1c1f2e;
+  --border-bright: #272b3f;
+  --cyan: #00e5ff;
+  --orange: #ff6b35;
+  --green: #39ff8a;
+  --yellow: #ffd600;
+  --purple: #b06aff;
+  --red: #ff3d6b;
+  --gold: #ffc93c;
+  --text: #dde2f5;
+  --muted: #4a5070;
+  --muted2: #6a7090;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,229,255,0.01) 3px,rgba(0,229,255,0.01) 4px);pointer-events:none;z-index:9999;}
+
+/* ── HERO HEADER ── */
+.hero{position:relative;padding:36px 20px 28px;max-width:900px;margin:0 auto;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,229,255,0.04) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(176,106,255,0.04) 0%,transparent 60%);pointer-events:none;}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;position:relative;}
+.brand{}
+.brand-codename{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:5px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;}
+.brand-codename::before{content:'// ';opacity:0.4;}
+.brand-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,10vw,96px);line-height:0.85;letter-spacing:3px;}
+.brand-title .t1{color:var(--text);}
+.brand-title .t2{color:var(--cyan);text-shadow:0 0 30px rgba(0,229,255,0.4);}
+.brand-subtitle{margin-top:10px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted2);}
+.brand-subtitle em{color:var(--gold);font-style:normal;}
+.brand-meaning{margin-top:8px;font-size:12px;color:var(--muted);line-height:1.6;max-width:340px;}
+.brand-meaning span{color:var(--cyan);}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-top:8px;}
+.sync-indicator{display:flex;align-items:center;gap:6px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:1px;}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);transition:all 0.3s;}
+.sync-dot.ok{background:var(--green);box-shadow:0 0 8px rgba(57,255,138,0.7);}
+.sync-dot.err{background:var(--red);}
+
+/* ── BUTTONS ── */
+.btn{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:9px 16px;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
+.btn-admin{background:rgba(176,106,255,0.1);color:var(--purple);border:1px solid rgba(176,106,255,0.3);}
+.btn-admin:hover{background:rgba(176,106,255,0.2);}
+.btn-danger{background:rgba(255,61,107,0.1);color:var(--red);border:1px solid rgba(255,61,107,0.25);}
+.btn-danger:hover{background:rgba(255,61,107,0.2);}
+.btn-success{background:rgba(57,255,138,0.1);color:var(--green);border:1px solid rgba(57,255,138,0.3);}
+.btn-success:hover{background:rgba(57,255,138,0.2);}
+.btn-sm{padding:6px 12px;font-size:9px;}
+
+/* ── DIVIDER ── */
+.hero-divider{height:1px;background:linear-gradient(90deg,var(--cyan),rgba(176,106,255,0.5),transparent);margin:20px 0;max-width:900px;margin-left:auto;margin-right:auto;}
+
+/* ── APP BODY ── */
+.app{max-width:900px;margin:0 auto;padding:0 16px 80px;}
+
+/* ── GLOBAL PROGRESS ── */
+.global-progress{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px 20px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.gp-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.gp-stat{text-align:center;}
+.gp-stat-val{font-family:'Bebas Neue',cursive;font-size:38px;line-height:1;color:var(--cyan);text-shadow:0 0 16px rgba(0,229,255,0.4);}
+.gp-stat-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-top:2px;}
+.gp-bar-wrap{flex:1;min-width:160px;}
+.gp-bar-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;}
+.gp-bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.gp-bar-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:4px;transition:width 0.8s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 10px rgba(0,229,255,0.35);}
+
+/* ── FILTER TABS ── */
+.filter-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
+.tab{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:7px 14px;border-radius:3px;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
+.tab:hover{border-color:var(--border-bright);color:var(--text);}
+.tab.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,0.06);}
+
+/* ── MISSION CARDS ── */
+.missions-grid{display:flex;flex-direction:column;gap:10px;}
+.mission-card{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color 0.2s;animation:slideIn 0.3s ease both;}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.mission-card:hover{border-color:var(--border-bright);}
+.mission-card.completed{border-color:rgba(57,255,138,0.2);background:rgba(57,255,138,0.015);}
+.mission-card.completed .mission-title{text-decoration:line-through;opacity:0.55;}
+.mission-inner{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;}
+.mission-check{width:28px;height:28px;border-radius:4px;border:2px solid var(--border-bright);background:transparent;cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s;color:transparent;}
+.mission-check:hover{border-color:var(--green);}
+.mission-card.completed .mission-check{background:rgba(57,255,138,0.12);border-color:var(--green);color:var(--green);}
+.mission-content{flex:1;}
+.mission-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap;}
+.mission-cat{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:2px 7px;border-radius:2px;text-transform:uppercase;}
+.cat-mates  {background:rgba(255,107,53,0.1);color:var(--orange);border:1px solid rgba(255,107,53,0.2);}
+.cat-socials{background:rgba(0,229,255,0.08);color:var(--cyan);border:1px solid rgba(0,229,255,0.15);}
+.cat-lengua {background:rgba(255,214,0,0.08);color:var(--yellow);border:1px solid rgba(255,214,0,0.2);}
+.cat-ingles {background:rgba(57,255,138,0.08);color:var(--green);border:1px solid rgba(57,255,138,0.2);}
+.cat-efisica{background:rgba(176,106,255,0.1);color:var(--purple);border:1px solid rgba(176,106,255,0.2);}
+.cat-profe  {background:rgba(255,61,107,0.1);color:var(--red);border:1px solid rgba(255,61,107,0.2);}
+.cat-general{background:rgba(255,255,255,0.04);color:var(--muted2);border:1px solid var(--border);}
+.cat-social {background:rgba(255,201,60,0.08);color:var(--gold);border:1px solid rgba(255,201,60,0.2);}
+.mission-xp{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--yellow);letter-spacing:1px;margin-left:auto;}
+.mission-title{font-size:15px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:4px;}
+.mission-desc{font-size:13px;color:var(--muted2);line-height:1.55;font-weight:400;}
+.mission-completed-by{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);margin-top:6px;letter-spacing:1px;opacity:0.7;}
+
+/* ── LOADING ── */
+.loading-state{text-align:center;padding:48px 20px;}
+.loading-spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted2);}
+.empty-state{text-align:center;padding:48px 20px;color:var(--muted);}
+.empty-state .e-icon{font-size:36px;margin-bottom:12px;opacity:0.4;}
+.empty-state .e-text{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:2px;}
+
+/* ── WHO PANEL ── */
+.who-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;}
+.who-overlay.open{display:flex;}
+.who-panel{background:var(--surface);border:1px solid var(--border-bright);border-top:3px solid var(--cyan);border-radius:8px;padding:28px 24px;max-width:340px;width:100%;animation:panelIn 0.2s ease;}
+@keyframes panelIn{from{opacity:0;transform:scale(0.97) translateY(-10px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.who-title{font-family:'Bebas Neue',cursive;font-size:26px;color:var(--cyan);margin-bottom:6px;}
+.who-sub{font-size:13px;color:var(--muted2);margin-bottom:20px;line-height:1.5;}
+.who-buttons{display:flex;flex-direction:column;gap:8px;}
+.who-btn{padding:12px 16px;border-radius:4px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:1px solid;transition:all 0.15s;text-align:left;display:flex;align-items:center;gap:10px;}
+.who-btn-samuel{background:rgba(57,255,138,0.08);color:var(--green);border-color:rgba(57,255,138,0.25);}
+.who-btn-papa  {background:rgba(0,229,255,0.08);color:var(--cyan);border-color:rgba(0,229,255,0.25);}
+.who-btn-mama  {background:rgba(255,214,0,0.08);color:var(--yellow);border-color:rgba(255,214,0,0.25);}
+.who-btn-felipe{background:rgba(176,106,255,0.08);color:var(--purple);border-color:rgba(176,106,255,0.25);}
+.who-btn:hover{filter:brightness(1.2);transform:translateX(3px);}
+
+/* ── ADMIN PANEL ── */
+.panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:20px 16px;overflow-y:auto;}
+.panel-overlay.open{display:flex;}
+.panel{background:var(--surface);border:1px solid var(--border-bright);border-top:3px solid var(--purple);border-radius:8px;width:100%;max-width:560px;padding:24px;animation:panelIn 0.25s ease;margin:auto;}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.panel-title{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--purple);letter-spacing:1px;}
+.panel-close{background:none;border:none;color:var(--muted2);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:3px;transition:color 0.15s;}
+.panel-close:hover{color:var(--text);}
+.form-group{margin-bottom:14px;}
+.form-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:6px;display:block;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--card);border:1px solid var(--border-bright);border-radius:4px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;padding:9px 12px;outline:none;transition:border-color 0.15s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--purple);}
+.form-textarea{min-height:80px;resize:vertical;}
+.form-select option{background:var(--card);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:400px){.form-row{grid-template-columns:1fr;}}
+.panel-divider{height:1px;background:var(--border);margin:20px 0;}
+.panel-subtitle{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:12px;}
+.admin-mission-list{display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto;}
+.admin-mission-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:4px;font-size:13px;}
+.admin-mission-item .ami-title{flex:1;}
+.admin-mission-item .ami-cat{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted2);}
+
+/* ── WEEKLY SUMMARY ── */
+.weekly-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:4px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.weekly-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
+.weekly-next{font-size:12px;color:var(--muted2);}
+
+/* ── CELEBRATE ── */
+.celebrate-overlay{position:fixed;inset:0;z-index:5000;pointer-events:none;display:none;}
+.celebrate-overlay.active{display:block;}
+.celebrate-message{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.5);background:var(--surface);border:2px solid var(--green);border-radius:12px;padding:28px 36px;text-align:center;z-index:5001;pointer-events:none;opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 60px rgba(57,255,138,0.3);max-width:360px;width:90%;}
+.celebrate-message.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+.cel-icon{font-size:48px;margin-bottom:12px;}
+.cel-title{font-family:'Bebas Neue',cursive;font-size:36px;color:var(--green);letter-spacing:2px;text-shadow:0 0 20px rgba(57,255,138,0.5);}
+.cel-who{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:2px;margin-top:6px;}
+.cel-sub{font-size:13px;color:var(--muted2);margin-top:8px;line-height:1.55;}
+.confetti-piece{position:fixed;border-radius:2px;pointer-events:none;z-index:5000;animation:confettiFall linear forwards;}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:20px;background:var(--surface);border:1px solid var(--border-bright);border-left:3px solid var(--green);border-radius:4px;padding:12px 16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--green);letter-spacing:1px;z-index:9000;transform:translateX(120%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);max-width:300px;}
+.toast.show{transform:translateX(0);}
+.toast.error{border-left-color:var(--red);color:var(--red);}
+.toast.info{border-left-color:var(--cyan);color:var(--cyan);}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-top">
+    <div class="brand">
+      <div class="brand-codename">Operación activa · 4º ESO · 2025-2026</div>
+      <div class="brand-title">
+        <div class="t1">S.A.M.U.</div>
+        <div class="t2">"The Comeback"</div>
+      </div>
+      <div class="brand-subtitle"><em>Sistema de Apoyo y Misiones para Un objetivo</em></div>
+      <div class="brand-meaning">
+        <span>S</span>istema de <span>A</span>poyo y <span>M</span>isiones para <span>U</span>n objetivo
+      </div>
+    </div>
+    <div class="hero-actions">
+      <div class="sync-indicator">
+        <div class="sync-dot" id="sync-dot"></div>
+        <span id="sync-text">Conectando...</span>
+      </div>
+      <a href="guide.html" style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:9px 16px;border-radius:3px;background:rgba(57,255,138,0.1);color:var(--green);border:1px solid rgba(57,255,138,0.3);text-decoration:none;text-transform:uppercase;">📚 Intel Guide</a>
+      <button class="btn btn-admin" onclick="openAdmin()">⚙ Admin</button>
+    </div>
+  </div>
+</div>
+<div class="hero-divider"></div>
+
+<!-- APP BODY -->
+<div class="app">
+
+  <!-- WEEKLY SUMMARY BAR -->
+  <div class="weekly-box">
+    <div>
+      <div class="weekly-label">📊 Resumen semanal</div>
+      <div class="weekly-next" id="weekly-next">Calculando próximo envío...</div>
+    </div>
+    <button class="btn btn-sm" style="background:rgba(255,201,60,0.1);color:var(--gold);border:1px solid rgba(255,201,60,0.25);" onclick="sendWeeklySummary()">Enviar ahora</button>
+  </div>
+
+  <!-- GLOBAL PROGRESS -->
+  <div class="global-progress">
+    <div class="gp-stats">
+      <div class="gp-stat"><div class="gp-stat-val" id="stat-completed">0</div><div class="gp-stat-label">Completadas</div></div>
+      <div class="gp-stat"><div class="gp-stat-val" id="stat-total">0</div><div class="gp-stat-label">Total</div></div>
+      <div class="gp-stat"><div class="gp-stat-val" id="stat-xp" style="color:var(--yellow);text-shadow:0 0 16px rgba(255,214,0,0.4)">0</div><div class="gp-stat-label">XP ganado</div></div>
+    </div>
+    <div class="gp-bar-wrap">
+      <div class="gp-bar-label"><span>Progreso del comeback</span><span id="bar-pct">0%</span></div>
+      <div class="gp-bar-track"><div class="gp-bar-fill" id="progress-bar" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="filter-tabs">
+    <button class="tab active" data-filter="all"       onclick="setFilter('all',this)">Todas</button>
+    <button class="tab"        data-filter="pending"   onclick="setFilter('pending',this)">Pendientes</button>
+    <button class="tab"        data-filter="completed" onclick="setFilter('completed',this)">Completadas</button>
+    <button class="tab"        data-filter="profe"     onclick="setFilter('profe',this)">Reto Profesores</button>
+    <button class="tab"        data-filter="social"    onclick="setFilter('social',this)">Desarrollo Social</button>
+  </div>
+
+  <!-- MISSIONS -->
+  <div class="missions-grid" id="missions-grid">
+    <div class="loading-state"><div class="loading-spinner"></div><div class="loading-text">Cargando misiones...</div></div>
+  </div>
+</div>
+
+<!-- WHO -->
+<div class="who-overlay" id="who-overlay">
+  <div class="who-panel">
+    <div class="who-title">¿Quién completa?</div>
+    <div class="who-sub">Elige quién está marcando esta misión como completada.</div>
+    <div class="who-buttons">
+      <button class="who-btn who-btn-samuel" onclick="confirmComplete('Samuel')">🎮 Samuel</button>
+      <button class="who-btn who-btn-papa"   onclick="confirmComplete('Papá')">⚡ Papá</button>
+      <button class="who-btn who-btn-mama"   onclick="confirmComplete('Mamá')">🌟 Mamá</button>
+      <button class="who-btn who-btn-felipe" onclick="confirmComplete('Felipe')">🎯 Felipe</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="panel-overlay" id="admin-overlay">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Panel Admin</div>
+      <button class="panel-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="panel-subtitle">// Nueva misión</div>
+    <div class="form-group"><label class="form-label">Título *</label><input class="form-input" id="f-title" placeholder="Ej: Entregar trabajo de Sociales" /></div>
+    <div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea" id="f-desc" placeholder="Qué tiene que hacer exactamente..."></textarea></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Categoría</label>
+        <select class="form-select" id="f-cat">
+          <option value="general">General</option><option value="mates">Matemáticas</option>
+          <option value="socials">Ciencias Sociales</option><option value="lengua">Lengua</option>
+          <option value="ingles">Inglés</option><option value="efisica">Ed. Física</option>
+          <option value="profe">Reto Profesores</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">XP</label><input class="form-input" id="f-xp" type="number" placeholder="50" min="0" max="500" /></div>
+    </div>
+    <button class="btn btn-success" onclick="addMission()" style="width:100%">+ Añadir misión</button>
+    <div class="panel-divider"></div>
+    <div class="panel-subtitle">// Misiones activas (<span id="admin-count">0</span>)</div>
+    <div class="admin-mission-list" id="admin-mission-list"></div>
+    <div class="panel-divider"></div>
+    <button class="btn btn-danger btn-sm" onclick="resetAll()">🗑 Restaurar misiones originales</button>
+  </div>
+</div>
+
+<!-- CELEBRATE -->
+<div class="celebrate-overlay" id="celebrate-overlay">
+  <div class="celebrate-message" id="celebrate-msg">
+    <div class="cel-icon">🏆</div>
+    <div class="cel-title">¡MISIÓN COMPLETADA!</div>
+    <div class="cel-who" id="cel-who"></div>
+    <div class="cel-sub" id="cel-sub"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ── FIREBASE + APP ── -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+import { getFirestore, collection, doc, onSnapshot, setDoc, deleteDoc, getDocs, writeBatch, query, orderBy }
+  from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+// ── CONFIG ──────────────────────────────────────────────
+const FIREBASE = {
+  apiKey: "AIzaSyBlWN60XJPkiS4RlbXM8FKtZDsB1IuhAjs",
+  authDomain: "samuel-missions.firebaseapp.com",
+  projectId: "samuel-missions",
+  storageBucket: "samuel-missions.firebasestorage.app",
+  messagingSenderId: "17487135398",
+  appId: "1:17487135398:web:543fdd0c25f8fdb5036a67"
+};
+const TG_TOKEN   = "8561570694:AAGzbrAhBuhZBdcU62LuEH_BZcUxvtaa8ds";
+const TG_CHAT_ID = "-5254474979";
+
+// ── FIREBASE INIT ────────────────────────────────────────
+const fb  = initializeApp(FIREBASE);
+const db  = getFirestore(fb);
+const col = collection(db, "missions");
+
+// ── DEFAULT MISSIONS ─────────────────────────────────────
+const DEFAULTS = [
+
+  // RETO PROFESORES
+  {id:"m01",title:"Hablar con el profe de Ed. Física",         desc:"Acercarte después de clase y decirle que vas a intentarlo en las próximas semanas. Solo eso. No hace falta que sea perfecto.",                              cat:"profe",  xp:100,completed:false,completedBy:null,completedAt:null,order:1},
+  {id:"m02",title:"Hablar con la profe de Matemáticas",        desc:"Decirle que quieres hacer un esfuerzo en la 3ª evaluación y preguntarle qué es lo más importante que necesitas entregar.",                               cat:"profe",  xp:100,completed:false,completedBy:null,completedAt:null,order:2},
+  {id:"m03",title:"Hablar con el profe de Ciencias Sociales",  desc:"Decirle que vas a intentarlo y preguntarle cuál es el tema más importante del examen final.",                                                            cat:"profe",  xp:100,completed:false,completedBy:null,completedAt:null,order:3},
+  {id:"m04",title:"Hablar con la profe de Lengua Castellana",  desc:"Decirle que quieres mejorar y preguntarle qué ejercicio concreto te recomienda para practicar en casa.",                                                 cat:"profe",  xp:100,completed:false,completedBy:null,completedAt:null,order:4},
+  {id:"m05",title:"Hablar con el tutor Carles Casadó",         desc:"Decirle en privado que quieres salvar el curso y preguntarle qué tres cosas concretas marcarían más la diferencia si las haces antes de final de curso.", cat:"profe",  xp:150,completed:false,completedBy:null,completedAt:null,order:5},
+
+  // ACADÉMICAS
+  {id:"m06",title:"Entrar al Moodle y ver qué hay pendiente",  desc:"Solo mirar. No hace falta hacerlo todo. Solo saber qué hay pendiente en cada asignatura.",                                                              cat:"general",xp:30, completed:false,completedBy:null,completedAt:null,order:6},
+  {id:"m07",title:"Entregar un trabajo de Ciencias Sociales",  desc:"Cualquier trabajo pendiente, aunque no esté perfecto. Entregado siempre vale más que no entregado.",                                                    cat:"socials",xp:80, completed:false,completedBy:null,completedAt:null,order:7},
+  {id:"m08",title:"Hacer un ejercicio de Matemáticas",         desc:"Un solo ejercicio completo. Que el profe lo vea hecho con tu letra.",                                                                                   cat:"mates",  xp:60, completed:false,completedBy:null,completedAt:null,order:8},
+  {id:"m09",title:"Participar 3 clases seguidas de Ed. Física",desc:"Tres clases donde hagas algo, lo que sea. No tiene que ser perfecto ni destacado.",                                                                     cat:"efisica",xp:120,completed:false,completedBy:null,completedAt:null,order:9},
+  {id:"m10",title:"Llegar puntual toda una semana",            desc:"Cinco días seguidos llegando a clase a tiempo. Pequeño, pero muy visible para los profes.",                                                             cat:"general",xp:70, completed:false,completedBy:null,completedAt:null,order:10},
+  {id:"m11",title:"Mantener el Notable de Inglés",             desc:"Seguir igual en Inglés hasta final de curso. Es tu punto fuerte real, no lo descuides.",                                                               cat:"ingles", xp:80, completed:false,completedBy:null,completedAt:null,order:11},
+  {id:"m12",title:"Participar una vez en clase esta semana",   desc:"En cualquier asignatura. Levantar la mano, responder algo, hacer una pregunta. Lo que sea. Una sola vez.",                                             cat:"general",xp:50, completed:false,completedBy:null,completedAt:null,order:12},
+  {id:"m13",title:"Completar un ejercicio de la Intel Guide",  desc:"Abre la guía de estudio, elige cualquier tema que te interese y escribe tu respuesta al ejercicio. No hace falta que sea perfecta.",                  cat:"general",xp:60, completed:false,completedBy:null,completedAt:null,order:13},
+  {id:"m14",title:"Entregar algo pendiente de Latín",          desc:"Ya tienes Satisfactori. Un trabajo más entregado en cultura latina puede subir a Notable. Pregunta al profe qué queda pendiente.",                    cat:"general",xp:70, completed:false,completedBy:null,completedAt:null,order:14},
+
+  // DESARROLLO SOCIAL
+  {id:"s01",title:"Decir 'buenos días' al entrar a clase",     desc:"Una vez. A nadie en particular, al aire si hace falta. No tiene que responder nadie. Solo romper el silencio. Es el paso más pequeño posible.",       cat:"social", xp:30, completed:false,completedBy:null,completedAt:null,order:15},
+  {id:"s02",title:"Responder si alguien te habla en clase",    desc:"Si un compañero te dice algo, responde con más de una palabra. No tienes que iniciar tú. Solo responder.",                                            cat:"social", xp:40, completed:false,completedBy:null,completedAt:null,order:16},
+  {id:"s03",title:"Preguntar algo a un compañero de clase",    desc:"Algo muy simple: '¿Tienes un boli?' '¿Sabes qué página es?' No hace falta que se convierta en conversación. Solo la pregunta.",                       cat:"social", xp:50, completed:false,completedBy:null,completedAt:null,order:17},
+  {id:"s04",title:"Hablar online con alguien sobre un juego",  desc:"Cuenta algo del GTA, CoD o Rocket League en un chat online. Lo que sea. Solo compartir algo que te gusta con alguien.",                              cat:"social", xp:40, completed:false,completedBy:null,completedAt:null,order:18},
+  {id:"s05",title:"Sentarte cerca de alguien en clase",        desc:"En lugar de buscar el sitio más alejado, sentarte donde haya gente cerca. Sin necesidad de hablar. Solo estar en el espacio compartido.",             cat:"social", xp:35, completed:false,completedBy:null,completedAt:null,order:19},
+  {id:"s06",title:"Compartir algo que te gusta con Felipe",    desc:"Enseñarle a tu hermano algo del juego que te esté gustando. Una misión, un clip, lo que sea. Solo compartir un momento.",                            cat:"social", xp:45, completed:false,completedBy:null,completedAt:null,order:20},
+  {id:"s07",title:"Cenar con la familia sin pantallas",        desc:"Una comida completa con papá, mamá y/o Felipe sin móvil ni ordenador. No hace falta hablar de nada importante. Solo estar juntos.",                  cat:"social", xp:60, completed:false,completedBy:null,completedAt:null,order:21},
+  {id:"s08",title:"Contar algo de tu día a papá o mamá",       desc:"Una sola cosa. Puede ser pequeña: algo que pasó en clase, algo del juego, algo que viste. No tiene que ser larga la conversación.",                   cat:"social", xp:50, completed:false,completedBy:null,completedAt:null,order:22},
+  {id:"s09",title:"Jugar online con alguien una hora seguida", desc:"Una sesión de gaming online donde interactúes con otros jugadores aunque sea por texto. La conexión online también cuenta.",                          cat:"social", xp:40, completed:false,completedBy:null,completedAt:null,order:23},
+  {id:"s10",title:"Hacer un plan con Felipe, aunque sea pequeño",desc:"Quedar para ver un vídeo juntos, jugar una partida, o salir a por algo. Felipe es tu equipo. Un plan pequeño ya es suficiente.",                  cat:"social", xp:70, completed:false,completedBy:null,completedAt:null,order:24},
+  {id:"s11",title:"Decir 'gracias' a un profe esta semana",    desc:"Cuando un profe te explique algo o te ayude, decirle gracias. Solo eso. Dos palabras que cambian cómo te perciben.",                                 cat:"social", xp:35, completed:false,completedBy:null,completedAt:null,order:25},
+  {id:"s12",title:"Una clase entera presente, sin auriculares",desc:"Una clase completa sin música ni podcast de fondo. Solo para ver cómo se siente. Sin presión de participar.",                                        cat:"social", xp:45, completed:false,completedBy:null,completedAt:null,order:26},
+];
+
+const MSGS = [
+  "Cada misión completada es una señal de que puedes. Porque puedes.",
+  "Los mejores jugadores no ganan siempre. Ganan los que no paran de intentarlo.",
+  "Un trabajo entregado cambia cómo te ven. Más importante: cambia cómo te ves tú.",
+  "No tienes que ser el mejor. Solo tienes que aparecer.",
+  "Llevas años dominando el GTA. Eso no es suerte, es constancia.",
+  "Cada profe al que le hablas es una misión que nadie te puede quitar.",
+  "Quedan semanas. El juego no ha terminado.",
+  "Inglés: Notable. Eso lo hiciste tú. Nadie más.",
+];
+
+// ── STATE ────────────────────────────────────────────────
+let missions = [];
+let currentFilter = 'all';
+let pendingId = null;
+
+// ── TELEGRAM ────────────────────────────────────────────
+async function tgSend(text) {
+  try {
+    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT_ID, text, parse_mode: 'HTML' })
+    });
+  } catch(e) { console.warn('Telegram error:', e); }
+}
+
+function tgMissionCompleted(mission, who) {
+  const total = missions.length;
+  const done  = missions.filter(m=>m.completed).length + 1;
+  const pct   = Math.round(done/total*100);
+  tgSend(
+`🏆 <b>S.A.M.U. "The Comeback"</b>
+
+✅ <b>MISIÓN COMPLETADA</b>
+📋 ${mission.title}
+👤 Completada por: <b>${who}</b>
+⚡ XP ganado: +${mission.xp}
+
+📊 Progreso: ${done}/${total} misiones (${pct}%)
+${'▓'.repeat(Math.round(pct/10))}${'░'.repeat(10-Math.round(pct/10))} ${pct}%`
+  );
+}
+
+function tgMissionAdded(mission) {
+  tgSend(
+`🆕 <b>S.A.M.U. "The Comeback"</b>
+
+📌 <b>NUEVA MISIÓN AÑADIDA</b>
+📋 ${mission.title}
+${mission.desc ? `📝 ${mission.desc}\n` : ''}⚡ XP disponible: +${mission.xp}
+🏷 Categoría: ${catLabel(mission.cat)}
+
+¡A por ella!`
+  );
+}
+
+function tgMissionUncompleted(mission) {
+  tgSend(
+`↩️ <b>S.A.M.U. "The Comeback"</b>
+
+🔄 Misión marcada como pendiente de nuevo:
+📋 ${mission.title}
+
+Sigue adelante, esto es parte del proceso.`
+  );
+}
+
+window.sendWeeklySummary = function() {
+  const total    = missions.length;
+  const done     = missions.filter(m=>m.completed).length;
+  const xp       = missions.filter(m=>m.completed).reduce((s,m)=>s+(m.xp||0),0);
+  const pct      = total>0?Math.round(done/total*100):0;
+  const pending  = missions.filter(m=>!m.completed).slice(0,3).map(m=>`• ${m.title}`).join('\n');
+  const byWho    = {};
+  missions.filter(m=>m.completed&&m.completedBy).forEach(m=>{ byWho[m.completedBy]=(byWho[m.completedBy]||0)+1; });
+  const whoStr   = Object.entries(byWho).map(([k,v])=>`${k}: ${v}`).join(' · ') || 'Nadie todavía';
+
+  tgSend(
+`📊 <b>S.A.M.U. "The Comeback" — Resumen semanal</b>
+
+✅ Misiones completadas: ${done}/${total}
+⚡ XP total: ${xp}
+📈 Progreso: ${'▓'.repeat(Math.round(pct/10))}${'░'.repeat(10-Math.round(pct/10))} ${pct}%
+
+👥 Quién ha completado más:
+${whoStr}
+
+📋 Próximas misiones pendientes:
+${pending || 'Sin misiones pendientes. ¡Increíble!'}
+
+💪 The Comeback sigue en marcha. ¡Seguimos!`
+  );
+  toast('Resumen semanal enviado a Telegram ✓', false, 'info');
+
+  // Save next send date (+7 days)
+  const next = new Date();
+  next.setDate(next.getDate()+7);
+  localStorage.setItem('samu_next_weekly', next.toISOString());
+  updateWeeklyLabel();
+};
+
+function updateWeeklyLabel() {
+  const raw = localStorage.getItem('samu_next_weekly');
+  const el  = document.getElementById('weekly-next');
+  if (!raw) { el.textContent = 'Primer envío pendiente'; return; }
+  const next = new Date(raw);
+  const now  = new Date();
+  const diff = Math.ceil((next-now)/(1000*60*60*24));
+  el.textContent = diff > 0 ? `Próximo envío automático en ${diff} día${diff===1?'':'s'}` : 'Listo para enviar';
+  if (diff <= 0) {
+    sendWeeklySummary();
+  }
+}
+
+// ── SYNC STATUS ──────────────────────────────────────────
+function syncStatus(s) {
+  const dot = document.getElementById('sync-dot');
+  const txt = document.getElementById('sync-text');
+  if (s==='ok') { dot.className='sync-dot ok'; txt.textContent='Sincronizado'; }
+  if (s==='err'){ dot.className='sync-dot err'; txt.textContent='Sin conexión'; }
+  if (s==='...') { dot.className='sync-dot'; txt.textContent='Conectando...'; }
+}
+
+// ── SEED ─────────────────────────────────────────────────
+async function seedIfEmpty() {
+  const snap = await getDocs(col);
+  if (snap.empty) {
+    const b = writeBatch(db);
+    DEFAULTS.forEach(m=>b.set(doc(db,"missions",m.id),m));
+    await b.commit();
+  }
+}
+
+// ── LISTEN ───────────────────────────────────────────────
+function listen() {
+  onSnapshot(query(col, orderBy("order","asc")),
+    snap => { missions=snap.docs.map(d=>({...d.data(),id:d.id})); syncStatus('ok'); render(); },
+    ()   => syncStatus('err')
+  );
+}
+
+// ── HELPERS ──────────────────────────────────────────────
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function catLabel(c){ return {mates:'Matemáticas',socials:'Ciencias Sociales',lengua:'Lengua',ingles:'Inglés',efisica:'Ed. Física',profe:'Reto Profesores',general:'General',social:'Desarrollo Social'}[c]||c; }
+
+// ── RENDER ───────────────────────────────────────────────
+function render() {
+  const filtered = currentFilter==='all'       ? missions
+                 : currentFilter==='pending'   ? missions.filter(m=>!m.completed)
+                 : currentFilter==='completed' ? missions.filter(m=>m.completed)
+                 : missions.filter(m=>m.cat===currentFilter);
+
+  const total=missions.length, done=missions.filter(m=>m.completed).length;
+  const xp=missions.filter(m=>m.completed).reduce((s,m)=>s+(m.xp||0),0);
+  const pct=total>0?Math.round(done/total*100):0;
+
+  document.getElementById('stat-completed').textContent=done;
+  document.getElementById('stat-total').textContent=total;
+  document.getElementById('stat-xp').textContent=xp;
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('bar-pct').textContent=pct+'%';
+
+  const grid=document.getElementById('missions-grid');
+  grid.innerHTML = filtered.length===0
+    ? `<div class="empty-state"><div class="e-icon">🎮</div><div class="e-text">${currentFilter==='completed'?'Ninguna completada todavía.':'No hay misiones aquí.'}</div></div>`
+    : filtered.map(m=>`
+      <div class="mission-card ${m.completed?'completed':''}">
+        <div class="mission-inner">
+          <button class="mission-check" onclick="window.__toggle('${m.id}')">${m.completed?'✓':''}</button>
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span class="mission-cat cat-${m.cat}">${catLabel(m.cat)}</span>
+              <span class="mission-xp">+${m.xp||0} XP</span>
+            </div>
+            <div class="mission-title">${esc(m.title)}</div>
+            ${m.desc?`<div class="mission-desc">${esc(m.desc)}</div>`:''}
+            ${m.completed&&m.completedBy?`<div class="mission-completed-by">✓ ${esc(m.completedBy)}${m.completedAt?' · '+m.completedAt:''}</div>`:''}
+          </div>
+        </div>
+      </div>`).join('');
+
+  // admin list
+  const al=document.getElementById('admin-mission-list');
+  const ac=document.getElementById('admin-count');
+  if(al){ ac.textContent=missions.length; al.innerHTML=missions.length===0
+    ? '<div style="color:var(--muted);font-size:12px;padding:10px 0;">No hay misiones.</div>'
+    : missions.map(m=>`
+      <div class="admin-mission-item">
+        <span style="font-size:11px;color:${m.completed?'var(--green)':'var(--muted2)'};">${m.completed?'✓':'○'}</span>
+        <span class="ami-title">${esc(m.title)}</span>
+        <span class="ami-cat">${catLabel(m.cat)}</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--yellow)">+${m.xp||0}</span>
+        <button class="btn btn-danger btn-sm" onclick="window.__del('${m.id}')">✕</button>
+      </div>`).join('');
+  }
+}
+
+// ── TOGGLE ───────────────────────────────────────────────
+window.__toggle = function(id) {
+  const m=missions.find(x=>x.id===id);
+  if(!m) return;
+  if(m.completed){
+    setDoc(doc(db,"missions",id),{...m,completed:false,completedBy:null,completedAt:null});
+    tgMissionUncompleted(m);
+    toast('Marcada como pendiente.');
+  } else {
+    pendingId=id;
+    document.getElementById('who-overlay').classList.add('open');
+  }
+};
+
+window.__confirmComplete = function(who) {
+  document.getElementById('who-overlay').classList.remove('open');
+  if(!pendingId) return;
+  const m=missions.find(x=>x.id===pendingId);
+  if(!m) return;
+  const d=new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'});
+  setDoc(doc(db,"missions",pendingId),{...m,completed:true,completedBy:who,completedAt:d});
+  tgMissionCompleted(m,who);
+  pendingId=null;
+  celebrate(who);
+};
+
+// ── ADD MISSION ──────────────────────────────────────────
+window.__add = async function() {
+  const title=document.getElementById('f-title').value.trim();
+  if(!title){ toast('Escribe un título.'); return; }
+  const id='u'+Date.now();
+  const max=missions.reduce((mx,m)=>Math.max(mx,m.order||0),0);
+  const newM={id,title,desc:document.getElementById('f-desc').value.trim(),cat:document.getElementById('f-cat').value,xp:parseInt(document.getElementById('f-xp').value)||50,completed:false,completedBy:null,completedAt:null,order:max+1};
+  await setDoc(doc(db,"missions",id),newM);
+  tgMissionAdded(newM);
+  document.getElementById('f-title').value='';
+  document.getElementById('f-desc').value='';
+  document.getElementById('f-xp').value='';
+  toast('Misión añadida y notificación enviada ✓');
+};
+
+window.__del = async function(id) {
+  if(!confirm('¿Eliminar esta misión?')) return;
+  await deleteDoc(doc(db,"missions",id));
+  toast('Eliminada.');
+};
+
+window.__reset = async function() {
+  if(!confirm('¿Borrar todo y restaurar las 10 misiones originales?')) return;
+  const snap=await getDocs(col);
+  const b=writeBatch(db);
+  snap.docs.forEach(d=>b.delete(d.ref));
+  DEFAULTS.forEach(m=>b.set(doc(db,"missions",m.id),m));
+  await b.commit();
+  toast('Restaurado a misiones originales.');
+  document.getElementById('admin-overlay').classList.remove('open');
+};
+
+// ── CELEBRATE ────────────────────────────────────────────
+function celebrate(who) {
+  const ov=document.getElementById('celebrate-overlay');
+  const msg=document.getElementById('celebrate-msg');
+  document.getElementById('cel-who').textContent='Completada por '+who;
+  document.getElementById('cel-sub').textContent=MSGS[Math.floor(Math.random()*MSGS.length)];
+  ov.classList.add('active');
+  setTimeout(()=>msg.classList.add('show'),50);
+  launchConfetti();
+  setTimeout(()=>{ msg.classList.remove('show'); setTimeout(()=>ov.classList.remove('active'),400); },3500);
+}
+
+function launchConfetti() {
+  const colors=['#00e5ff','#39ff8a','#ffd600','#ff6b35','#b06aff','#ff3d6b'];
+  const ov=document.getElementById('celebrate-overlay');
+  for(let i=0;i<80;i++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${colors[~~(Math.random()*6)]};animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*0.7}s;width:${5+Math.random()*9}px;height:${5+Math.random()*9}px;`;
+    ov.appendChild(p);
+    setTimeout(()=>p.remove(),5000);
+  }
+}
+
+// ── TOAST ────────────────────────────────────────────────
+function toast(msg,err=false,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast'+(err?' error':type?' '+type:'');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ── FILTER ───────────────────────────────────────────────
+window.__filter=function(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.filter===f));
+  render();
+};
+
+// ── BOOT ─────────────────────────────────────────────────
+(async()=>{
+  await seedIfEmpty();
+  listen();
+  updateWeeklyLabel();
+})();
+</script>
+
+<script>
+function setFilter(f,b){ window.__filter(f,b); }
+function confirmComplete(w){ window.__confirmComplete(w); }
+function addMission(){ window.__add(); }
+function resetAll(){ window.__reset(); }
+function openAdmin(){ document.getElementById('admin-overlay').classList.add('open'); }
+function closeAdmin(){ document.getElementById('admin-overlay').classList.remove('open'); }
+document.getElementById('admin-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('admin-overlay'))closeAdmin(); });
+document.getElementById('celebrate-overlay').addEventListener('click',()=>{
+  document.getElementById('celebrate-msg').classList.remove('show');
+  document.getElementById('celebrate-overlay').classList.remove('active');
+});
+</script>
+</body>
+</html>

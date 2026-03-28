@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.A.M.U. · Guía de Estudio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080a0f;
+  --surface: #0f1119;
+  --card: #13161f;
+  --border: #1c1f2e;
+  --border-bright: #272b3f;
+  --cyan: #00e5ff;
+  --orange: #ff6b35;
+  --green: #39ff8a;
+  --yellow: #ffd600;
+  --purple: #b06aff;
+  --red: #ff3d6b;
+  --gold: #ffc93c;
+  --text: #dde2f5;
+  --muted: #4a5070;
+  --muted2: #6a7090;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,229,255,0.01) 3px,rgba(0,229,255,0.01) 4px);pointer-events:none;z-index:9999;}
+
+.app{max-width:900px;margin:0 auto;padding:0 16px 80px;}
+
+/* ── HERO ── */
+.hero{padding:36px 0 20px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,229,255,0.04) 0%,transparent 60%);pointer-events:none;}
+.back-btn{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted2);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;transition:color 0.15s;background:none;border:none;cursor:pointer;padding:0;}
+.back-btn:hover{color:var(--cyan);}
+.brand-codename{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:5px;opacity:0.6;margin-bottom:6px;}
+.brand-codename::before{content:'// ';}
+h1{font-family:'Bebas Neue',cursive;font-size:clamp(48px,9vw,88px);line-height:0.88;letter-spacing:3px;margin-bottom:10px;}
+h1 .t1{color:var(--text);}
+h1 .t2{color:var(--cyan);text-shadow:0 0 28px rgba(0,229,255,0.4);}
+.hero-sub{font-size:13px;color:var(--muted2);line-height:1.6;max-width:560px;border-left:2px solid var(--cyan);padding-left:14px;}
+.hero-sub strong{color:var(--cyan);}
+.hero-divider{height:1px;background:linear-gradient(90deg,var(--cyan),rgba(176,106,255,0.4),transparent);margin:24px 0;}
+
+/* ── GAME TAGS ── */
+.game-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.game-tag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:5px 12px;border-radius:3px;text-transform:uppercase;}
+.tag-gta    {background:rgba(255,107,53,0.1);color:var(--orange);border:1px solid rgba(255,107,53,0.25);}
+.tag-cod    {background:rgba(57,255,138,0.08);color:var(--green);border:1px solid rgba(57,255,138,0.2);}
+.tag-rocket {background:rgba(0,229,255,0.08);color:var(--cyan);border:1px solid rgba(0,229,255,0.2);}
+
+/* ── SUBJECT NAV ── */
+.subject-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;}
+.snav-btn{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:7px 12px;border-radius:3px;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;text-transform:uppercase;transition:all 0.15s;}
+.snav-btn:hover{border-color:var(--border-bright);color:var(--text);}
+.snav-btn.active{color:#000;font-weight:600;}
+.snav-mates  .active,.snav-btn.s-mates.active  {background:var(--orange);border-color:var(--orange);color:#000;}
+.snav-btn.s-mates.active  {background:var(--orange);border-color:var(--orange);}
+.snav-btn.s-socials.active{background:var(--cyan);border-color:var(--cyan);}
+.snav-btn.s-lengua.active {background:var(--yellow);border-color:var(--yellow);}
+.snav-btn.s-ingles.active {background:var(--green);border-color:var(--green);}
+.snav-btn.s-efisica.active{background:var(--purple);border-color:var(--purple);color:#fff;}
+.snav-btn.s-latin.active  {background:var(--gold);border-color:var(--gold);}
+.snav-btn.s-valores.active{background:var(--red);border-color:var(--red);color:#fff;}
+.snav-btn.s-all.active    {background:var(--border-bright);border-color:var(--border-bright);color:var(--text);}
+
+/* ── SUBJECT SECTIONS ── */
+.subject-section{margin-bottom:40px;animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.subject-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.subject-icon{font-size:28px;width:44px;text-align:center;}
+.subject-title-block{}
+.subject-name{font-family:'Bebas Neue',cursive;font-size:32px;letter-spacing:1px;line-height:1;}
+.subject-badge{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:2px 8px;border-radius:2px;margin-top:4px;display:inline-block;}
+.badge-na {background:rgba(255,61,107,0.12);color:var(--red);border:1px solid rgba(255,61,107,0.25);}
+.badge-as {background:rgba(255,214,0,0.1);color:var(--yellow);border:1px solid rgba(255,214,0,0.2);}
+.badge-an {background:rgba(57,255,138,0.1);color:var(--green);border:1px solid rgba(57,255,138,0.2);}
+
+/* ── TOPIC CARDS ── */
+.topic-card{background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:14px;overflow:hidden;transition:border-color 0.2s;}
+.topic-card:hover{border-color:var(--border-bright);}
+.topic-header{padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;}
+.topic-num{font-family:'Bebas Neue',cursive;font-size:24px;color:var(--border-bright);line-height:1;flex-shrink:0;width:28px;}
+.topic-info{flex:1;}
+.topic-title{font-size:15px;font-weight:600;color:var(--text);line-height:1.3;}
+.topic-games{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap;}
+.tg-tag{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:1px;padding:1px 6px;border-radius:2px;}
+.tg-gta   {background:rgba(255,107,53,0.1);color:var(--orange);}
+.tg-cod   {background:rgba(57,255,138,0.08);color:var(--green);}
+.tg-rocket{background:rgba(0,229,255,0.08);color:var(--cyan);}
+.topic-chevron{font-size:11px;color:var(--muted);transition:transform 0.3s;flex-shrink:0;}
+.topic-chevron.open{transform:rotate(180deg);color:var(--cyan);}
+
+.topic-body{display:none;border-top:1px solid var(--border);}
+.topic-body.open{display:block;}
+
+/* EXPLANATION */
+.explanation{padding:16px;}
+.exp-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.exp-label.game{color:var(--orange);}
+.exp-label.school{color:var(--cyan);}
+.exp-connect{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:start;margin-bottom:14px;}
+@media(max-width:520px){.exp-connect{grid-template-columns:1fr;}.exp-arrow{display:none;}}
+.exp-side{padding:12px 14px;border-radius:4px;font-size:13px;line-height:1.65;}
+.exp-game  {background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.12);}
+.exp-school{background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.1);}
+.exp-arrow {font-size:20px;color:var(--cyan);opacity:0.3;padding-top:12px;text-align:center;}
+.exp-key{background:rgba(255,214,0,0.05);border:1px solid rgba(255,214,0,0.15);border-radius:4px;padding:10px 14px;font-size:12px;color:#b0b8d0;line-height:1.6;}
+.exp-key strong{color:var(--yellow);}
+
+/* EXERCISE */
+.exercise{padding:16px;border-top:1px solid var(--border);background:rgba(57,255,138,0.02);}
+.ex-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--green);text-transform:uppercase;margin-bottom:10px;}
+.ex-challenge{font-size:14px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.5;}
+.ex-body{font-size:13px;color:var(--muted2);line-height:1.65;margin-bottom:12px;}
+.ex-answer-area{width:100%;background:var(--surface);border:1px solid var(--border-bright);border-radius:4px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:13px;padding:10px 12px;outline:none;min-height:80px;resize:vertical;transition:border-color 0.15s;}
+.ex-answer-area:focus{border-color:var(--green);}
+.ex-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.btn-check{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px 16px;border-radius:3px;background:rgba(57,255,138,0.1);color:var(--green);border:1px solid rgba(57,255,138,0.3);cursor:pointer;transition:all 0.15s;text-transform:uppercase;}
+.btn-check:hover{background:rgba(57,255,138,0.2);}
+.btn-hint{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px 16px;border-radius:3px;background:rgba(255,214,0,0.08);color:var(--yellow);border:1px solid rgba(255,214,0,0.2);cursor:pointer;transition:all 0.15s;text-transform:uppercase;}
+.btn-hint:hover{background:rgba(255,214,0,0.15);}
+.ex-feedback{margin-top:10px;padding:10px 14px;border-radius:4px;font-size:13px;line-height:1.6;display:none;}
+.ex-feedback.show{display:block;}
+.ex-feedback.hint{background:rgba(255,214,0,0.06);border:1px solid rgba(255,214,0,0.2);color:#c0b060;}
+.ex-feedback.answer{background:rgba(57,255,138,0.06);border:1px solid rgba(57,255,138,0.2);color:#60c080;}
+.ex-xp{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--yellow);margin-top:8px;letter-spacing:1px;}
+
+/* ── PROGRESS SUMMARY ── */
+.progress-summary{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px 20px;margin-bottom:28px;}
+.ps-title{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--muted2);text-transform:uppercase;margin-bottom:14px;}
+.ps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
+.ps-item{text-align:center;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:4px;}
+.ps-val{font-family:'Bebas Neue',cursive;font-size:28px;line-height:1;color:var(--cyan);}
+.ps-label{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--muted2);margin-top:2px;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- HERO -->
+<div class="hero">
+  <button class="back-btn" onclick="history.back()">← Volver a S.A.M.U.</button>
+  <div class="brand-codename">Guía de estudio · Samuel Adarme · 4º ESO</div>
+  <h1><div class="t1">INTEL</div><div class="t2">GUIDE</div></h1>
+  <p class="hero-sub">Lo que ya sabes en el juego, <strong>aplicado directamente al cole</strong>. Cada tema explicado desde tu mundo, con un ejercicio real para practicar.</p>
+</div>
+<div class="hero-divider"></div>
+
+<!-- GAME TAGS -->
+<div class="game-tags">
+  <span class="game-tag tag-gta">🎮 GTA V</span>
+  <span class="game-tag tag-cod">🎖 Call of Duty</span>
+  <span class="game-tag tag-rocket">🚀 Rocket League</span>
+</div>
+
+<!-- PROGRESS SUMMARY -->
+<div class="progress-summary">
+  <div class="ps-title">// Tu mapa de batalla actual</div>
+  <div class="ps-grid">
+    <div class="ps-item"><div class="ps-val" style="color:var(--red)">NA</div><div class="ps-label">Matemáticas</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--red)">NA</div><div class="ps-label">Sociales</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--red)">NA</div><div class="ps-label">Lengua Cast.</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--green)">AN</div><div class="ps-label">Inglés</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--red)">NA</div><div class="ps-label">Ed. Física</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--yellow)">AS</div><div class="ps-label">Latín</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--green)">AN</div><div class="ps-label">Música</div></div>
+    <div class="ps-item"><div class="ps-val" style="color:var(--red)">NA</div><div class="ps-label">Valores Cív.</div></div>
+  </div>
+</div>
+
+<!-- SUBJECT NAV -->
+<div class="subject-nav" id="subject-nav">
+  <button class="snav-btn s-all active"    onclick="filterSubject('all',this)">Todas</button>
+  <button class="snav-btn s-mates"         onclick="filterSubject('mates',this)">🧮 Mates</button>
+  <button class="snav-btn s-socials"       onclick="filterSubject('socials',this)">🌍 Sociales</button>
+  <button class="snav-btn s-lengua"        onclick="filterSubject('lengua',this)">📖 Lengua</button>
+  <button class="snav-btn s-ingles"        onclick="filterSubject('ingles',this)">🇬🇧 Inglés</button>
+  <button class="snav-btn s-efisica"       onclick="filterSubject('efisica',this)">⚡ Ed. Física</button>
+  <button class="snav-btn s-latin"         onclick="filterSubject('latin',this)">🏛 Latín</button>
+  <button class="snav-btn s-valores"       onclick="filterSubject('valores',this)">⚖️ Valores</button>
+</div>
+
+<!-- SUBJECTS CONTAINER -->
+<div id="subjects-container"></div>
+
+</div>
+
+<script>
+const SUBJECTS = [
+  // ── MATEMÁTICAS ────────────────────────────────────────
+  {
+    id: 'mates', name: 'Matemáticas', icon: '🧮', badge: 'NA · No Assolit',
+    badgeClass: 'badge-na',
+    topics: [
+      {
+        title: 'Porcentajes y descuentos',
+        games: ['gta'],
+        explanation: {
+          game: 'En el GTA compras coches, armas y propiedades. Cuando hay descuento del 30% en un Zentorno que cuesta $900.000, tu cerebro ya calcula automáticamente cuánto ahorras. Eso es un porcentaje aplicado.',
+          school: 'En matemáticas piden exactamente lo mismo: calcular el 30% de 900, o saber qué precio final queda después de un descuento. La fórmula es: Precio final = Precio original × (1 - descuento/100).',
+          key: '<strong>Truco:</strong> Para calcular el 30% de cualquier número, divídelo entre 10 (eso es el 10%) y multiplícalo por 3.'
+        },
+        exercise: {
+          challenge: '🎮 Misión de compra en el GTA',
+          body: 'El Ocelot F620 cuesta $12.000 en el concesionario. Esta semana hay un 25% de descuento. ¿Cuánto pagas? ¿Cuánto ahorras?',
+          hint: 'Paso 1: Calcula el 25% de 12.000 (= 12.000 × 25 ÷ 100). Paso 2: Resta ese resultado a 12.000.',
+          answer: 'El 25% de 12.000 = 3.000. Precio final = 12.000 - 3.000 = 9.000$. Ahorras 3.000$.',
+          xp: 40
+        }
+      },
+      {
+        title: 'Geometría: ángulos y trayectorias',
+        games: ['rocket', 'gta'],
+        explanation: {
+          game: 'En Rocket League cada disparo es geometría pura. Cuando rebota la pelota en la pared a 45°, sale a 45° del otro lado. Cuando calculas el ángulo para marcar desde el lateral, estás usando ángulos de incidencia y reflexión. En el GTA calculas inconscientemente la curva para no chocar.',
+          school: 'Ángulos complementarios (suman 90°), suplementarios (suman 180°), y el teorema de que el ángulo de incidencia = ángulo de reflexión. Todo eso lo aplicas en Rocket League.',
+          key: '<strong>Conexión directa:</strong> Cada pared shot en Rocket League = ángulo de reflexión. Si entras a 60° de la pared, la pelota sale a 60° del otro lado.'
+        },
+        exercise: {
+          challenge: '🚀 Rocket League: el tiro perfecto',
+          body: 'La pelota va hacia la pared lateral formando un ángulo de 40° con la pared. ¿A qué ángulo sale rebotada? ¿Cuánto mide el ángulo que forma la trayectoria de entrada con la de salida?',
+          hint: 'El ángulo de rebote es igual al ángulo de entrada. La trayectoria total de entrada+salida forma dos ángulos iguales.',
+          answer: 'Sale a 40°. El ángulo entre ambas trayectorias = 40° + 40° = 80°. Y el ángulo que queda hasta la pared = 180° - 80° = 100°.',
+          xp: 50
+        }
+      },
+      {
+        title: 'Estadística básica: media, mediana y moda',
+        games: ['rocket', 'cod'],
+        explanation: {
+          game: 'En Rocket League al final de cada partida ves tus stats: goles, asistencias, tiros. Si en 5 partidas metes 0, 2, 1, 3, 2 goles, puedes calcular tu promedio (media). En CoD tu K/D ratio es una media de kills por muerte.',
+          school: 'Media = suma de todos los valores ÷ número de valores. Mediana = el valor del medio cuando los ordenas. Moda = el que más se repite.',
+          key: '<strong>Tu K/D en CoD es literalmente una media.</strong> Si tienes 150 kills en 75 muertes, tu K/D = 150÷75 = 2.0.'
+        },
+        exercise: {
+          challenge: '🎖 CoD: análisis de rendimiento',
+          body: 'En tus últimas 7 partidas de CoD has tenido estas puntuaciones de kills: 8, 12, 6, 15, 8, 10, 8. Calcula la media, la mediana y la moda. ¿Cuál describe mejor tu nivel habitual?',
+          hint: 'Media: suma todos y divide entre 7. Mediana: ordénalos de menor a mayor y coge el del medio. Moda: el que más se repite.',
+          answer: 'Media: (8+12+6+15+8+10+8)÷7 = 67÷7 ≈ 9,6. Mediana: ordenados [6,8,8,8,10,12,15] → el del medio es 8. Moda: 8 (aparece 3 veces). La moda describe mejor el nivel habitual.',
+          xp: 60
+        }
+      }
+    ]
+  },
+
+  // ── CIENCIAS SOCIALES ──────────────────────────────────
+  {
+    id: 'socials', name: 'Ciencias Sociales', icon: '🌍', badge: 'NA · No Assolit',
+    badgeClass: 'badge-na',
+    topics: [
+      {
+        title: 'La Guerra Civil Española',
+        games: ['cod'],
+        explanation: {
+          game: 'En Call of Duty juegas conflictos bélicos: hay dos bandos, cada uno con sus aliados, su territorio controlado y sus objetivos. La Guerra Civil española (1936-1939) funciona exactamente igual: dos bandos (Republicanos vs Nacionales), aliados externos (la URSS apoyó a la República, Alemania e Italia a Franco) y un mapa de zonas controladas que cambiaba cada mes.',
+          school: 'El temario pide conocer las causas (inestabilidad política, tensión social), los bandos, el papel de las potencias extranjeras y las consecuencias (dictadura de Franco hasta 1975). Es el tema más importante del examen.',
+          key: '<strong>Piénsalo como CoD:</strong> República = aliados con URSS y voluntarios internacionales (Brigadas Internacionales). Nacionales = aliados con la Alemania nazi y la Italia fascista. El mapa cambiaba como en un partido de dominio.'
+        },
+        exercise: {
+          challenge: '🎖 Briefing de misión: Guerra Civil',
+          body: 'Imagina que eres un corresponsal de guerra en 1936. Escribe un "parte de situación" de 5 líneas explicando: quiénes son los dos bandos, quién apoya a cada uno desde el exterior y cuál es el objetivo de cada bando.',
+          hint: 'Bando 1: gobierno legítimo de la República. Bando 2: militares sublevados liderados por Franco. Apoyos externos: clave para entender por qué ganó Franco.',
+          answer: 'Bando republicano: gobierno elegido democráticamente, apoyado por la URSS y las Brigadas Internacionales (voluntarios extranjeros). Objetivo: mantener la democracia. Bando nacional: militares golpistas liderados por Franco, apoyados por la Alemania de Hitler y la Italia de Mussolini. Objetivo: tomar el control del Estado. El conflicto duró 3 años y terminó con la victoria de Franco en 1939.',
+          xp: 70
+        }
+      },
+      {
+        title: 'La Restauración Borbónica y el sistema político',
+        games: ['gta'],
+        explanation: {
+          game: 'En el GTA hay una jerarquía de poder muy clara: los políticos y empresarios corruptos mandan por encima de la policía, que manda por encima de la gente. Nadie llega al poder sin alianzas y sin controlar el sistema. La Restauración Borbónica (1874-1923) en España funcionaba igual: dos partidos (Liberal y Conservador) se turnaban en el poder de forma pactada. Se llamaba el "turno pacífico" pero era básicamente un sistema amañado.',
+          school: 'La Restauración = retorno de la monarquía borbónica con Alfonso XII. Sistema bipartidista controlado por Cánovas (Conservador) y Sagasta (Liberal). El caciquismo = personas con poder local que controlaban los votos. Como los jefes de zona del GTA.',
+          key: '<strong>Caciquismo = el jefe de zona del GTA.</strong> Controlaba el territorio, decidía quién "ganaba" las elecciones, y nadie le cuestionaba. Sin caciques no había Restauración.'
+        },
+        exercise: {
+          challenge: '🎮 Analiza el sistema de poder',
+          body: 'Compara el sistema de la Restauración con una organización del GTA. ¿Quién sería Cánovas en el GTA? ¿Quién serían los caciques? ¿Por qué este sistema no podía durar para siempre? Escribe 4-5 líneas.',
+          hint: 'Piensa en quién controla el territorio, quién negocia con el rival para no destruirse mutuamente, y qué pasa cuando la gente de abajo se harta.',
+          answer: 'Cánovas y Sagasta serían los dos grandes jefes de organización que pactan turnarse el control sin destruirse. Los caciques serían los jefes de distrito que garantizan los votos en su zona a cambio de favores. El sistema no podía durar porque ignoraba a la mayoría de la población, generaba desigualdad extrema y con el tiempo los movimientos obreros y nacionalistas (Cataluña, País Vasco) empezaron a romper el bipartidismo.',
+          xp: 70
+        }
+      },
+      {
+        title: 'Propaganda y medios de comunicación',
+        games: ['gta', 'cod'],
+        explanation: {
+          game: 'La televisión del GTA (Weazel News) y las radios del juego son parodias de medios reales que mienten, exageran y manipulan. En CoD, los juegos de la Segunda Guerra Mundial siempre tienen una narrativa de "los buenos contra los malos". En la vida real, todos los bandos de todos los conflictos usaban propaganda para convencer a su pueblo.',
+          school: 'La propaganda es información manipulada para influir en la opinión pública. En la Guerra Civil ambos bandos la usaron. Franco controló la prensa después de ganar. Es un contenido clave del temario.',
+          key: '<strong>La Weazel News del GTA = propaganda real.</strong> Elige una historia, enfócala desde un solo punto de vista, repítela suficientes veces y la gente lo creerá. Así funciona en el juego y así funcionó en la historia.'
+        },
+        exercise: {
+          challenge: '📺 Crea un titular de propaganda',
+          body: 'Elige el bando republicano O el bando nacional en la Guerra Civil. Escribe DOS titulares de periódico sobre el mismo evento (por ejemplo, la toma de una ciudad), uno desde cada bando. ¿Cómo describe cada uno lo mismo de forma completamente diferente?',
+          hint: 'El mismo hecho puede ser "liberación" para unos y "invasión" para otros. Piensa en cómo la Weazel News describiría algo que tú mismo has vivido en el juego.',
+          answer: 'Ejemplo sobre la toma de Málaga en 1937. Titular nacional: "Las fuerzas nacionales LIBERAN Málaga del terror rojo". Titular republicano: "Las hordas fascistas INVADEN y MASACRAN a la población civil de Málaga". Mismo hecho, dos realidades completamente opuestas. Eso es propaganda.',
+          xp: 60
+        }
+      }
+    ]
+  },
+
+  // ── LENGUA CASTELLANA ──────────────────────────────────
+  {
+    id: 'lengua', name: 'Lengua Castellana', icon: '📖', badge: 'NA · Materia adaptada',
+    badgeClass: 'badge-na',
+    topics: [
+      {
+        title: 'Análisis de personajes',
+        games: ['gta', 'cod'],
+        explanation: {
+          game: 'Trevor, Michael y Franklin del GTA son personajes con una psicología muy elaborada. Trevor es caos puro pero tiene un código de lealtad. Michael está atrapado entre su vida de crimen y querer ser "normal". Franklin quiere escapar de su barrio. Cada uno tiene una motivación, un conflicto interno y evoluciona a lo largo del juego.',
+          school: 'Analizar un personaje literario es exactamente lo mismo: quién es, qué quiere, qué le impide conseguirlo, cómo cambia. Esa estructura la tienes ya en la cabeza gracias al GTA.',
+          key: '<strong>Estructura de análisis:</strong> 1) Descripción física y social. 2) Motivación principal. 3) Conflicto interno. 4) Evolución a lo largo de la historia. 5) Relación con otros personajes.'
+        },
+        exercise: {
+          challenge: '🎮 Análisis literario: Trevor Philips',
+          body: 'Usando la estructura de análisis de personajes, escribe un párrafo sobre Trevor de GTA V respondiendo: ¿Cómo es físicamente y socialmente? ¿Qué quiere? ¿Qué le impide ser "feliz"? ¿Cambia a lo largo del juego? Esta misma estructura se aplica a cualquier personaje de un libro.',
+          hint: 'No hace falta que sea perfecto. Usa las 5 preguntas: quién es, qué quiere, qué le bloquea, cómo evoluciona, con quién se relaciona.',
+          answer: 'Trevor Philips es un hombre de mediana edad, de aspecto descuidado y comportamiento impredecible, que vive al margen de la sociedad. Su motivación principal es la lealtad a sus socios y el deseo de control. Su conflicto interno es que no puede controlar su violencia, lo que le impide mantener relaciones estables. A lo largo del juego evoluciona desde el caos puro hacia una lealtad más consciente, aunque sin abandonar su naturaleza. Su relación más compleja es con Michael, mezcla de amor fraternal y traición.',
+          xp: 65
+        }
+      },
+      {
+        title: 'Tipos de texto: narrativo, argumentativo, descriptivo',
+        games: ['gta'],
+        explanation: {
+          game: 'En el GTA hay tres tipos de comunicación constante: las cinemáticas cuentan historias (texto narrativo), los personajes convencen a otros para hacer misiones (texto argumentativo) y los anuncios de la radio describen productos (texto descriptivo). Los reconoces sin darte cuenta.',
+          school: 'Texto narrativo: cuenta hechos con personajes, tiempo y lugar. Argumentativo: defiende una idea con razones. Descriptivo: explica cómo es algo o alguien. En el examen te piden identificarlos y escribirlos.',
+          key: '<strong>Truco para identificarlos:</strong> ¿Cuenta algo que pasó? Narrativo. ¿Intenta convencerte de algo? Argumentativo. ¿Explica cómo es algo? Descriptivo.'
+        },
+        exercise: {
+          challenge: '📝 Escribe los tres tipos',
+          body: 'Usando el GTA como tema, escribe tres mini-textos de 2-3 líneas cada uno: 1) Un texto NARRATIVO contando brevemente qué pasó en una misión. 2) Un texto ARGUMENTATIVO convenciendo a alguien de que el GTA debería estudiarse en el cole. 3) Un texto DESCRIPTIVO describiendo Los Santos (la ciudad del juego).',
+          hint: 'Narrativo: usa verbos en pasado y cuenta una secuencia. Argumentativo: usa "porque", "ya que", "por lo tanto". Descriptivo: usa adjetivos y verbos como "es", "tiene", "se encuentra".',
+          answer: 'Narrativo: "Trevor recibió la llamada de Michael a las tres de la madrugada. Cogió su camioneta, cruzó el desierto y llegó al almacén justo cuando los guardias cambiaban el turno. La misión había comenzado." Argumentativo: "El GTA debería estudiarse en las aulas porque desarrolla habilidades de pensamiento estratégico, contiene narrativas complejas comparables a la literatura contemporánea y conecta con los intereses reales de los jóvenes." Descriptivo: "Los Santos es una ciudad costera de grandes contrastes, con rascacielos de cristal en el centro financiero, barrios residenciales en las colinas y zonas industriales junto al puerto donde conviven varias culturas."',
+          xp: 70
+        }
+      },
+      {
+        title: 'Morfosintaxis: sujeto y predicado',
+        games: ['cod'],
+        explanation: {
+          game: 'En CoD cada orden de misión tiene una estructura clara: "El equipo Alpha destruye el objetivo". "El equipo Alpha" es quien hace la acción (sujeto). "Destruye el objetivo" es la acción y qué afecta (predicado). Sin sujeto no hay responsable. Sin predicado no hay misión.',
+          school: 'El sujeto es quien realiza la acción del verbo. El predicado es el verbo y todo lo que lo acompaña. Para encontrar el sujeto, pregunta al verbo "¿quién?" o "¿qué?".',
+          key: '<strong>Método infalible:</strong> 1) Encuentra el verbo (la acción). 2) Pregúntale "¿quién hace esto?". 3) Eso es el sujeto. 4) Todo lo demás es el predicado.'
+        },
+        exercise: {
+          challenge: '🎖 Analiza el parte de misión',
+          body: 'Identifica el sujeto y el predicado en estas frases de CoD: 1) "El sargento Price elimina a los enemigos". 2) "Las tropas aliadas cruzan el río al amanecer". 3) "La bomba explota en el búnker". Para cada una escribe S= y P=.',
+          hint: 'Primero busca el verbo en cada frase. Luego pregúntale "¿quién?" hace esa acción.',
+          answer: '1) S= El sargento Price / P= elimina a los enemigos. 2) S= Las tropas aliadas / P= cruzan el río al amanecer. 3) S= La bomba / P= explota en el búnker.',
+          xp: 45
+        }
+      }
+    ]
+  },
+
+  // ── INGLÉS ─────────────────────────────────────────────
+  {
+    id: 'ingles', name: 'Inglés', icon: '🇬🇧', badge: 'AN · Notable ✓',
+    badgeClass: 'badge-an',
+    topics: [
+      {
+        title: 'Comprensión lectora: gaming vocabulary',
+        games: ['gta', 'cod', 'rocket'],
+        explanation: {
+          game: 'Ya tienes un vocabulario de inglés gaming enorme sin darte cuenta. Spawn, respawn, lobby, loadout, killstreak, clutch, boost, aerial, rotation... Todo eso es inglés real que usas constantemente. La profe dice que necesitas reforzar comprensión lectora y oral. La solución más fácil: jugar en inglés.',
+          school: 'La comprensión lectora en inglés pide entender el sentido general de un texto, identificar información específica e inferir el significado de palabras por contexto. Lo haces en el juego cada vez que lees un objetivo de misión en inglés.',
+          key: '<strong>Estrategia para subir de AN a AE:</strong> Pon el GTA en inglés. Ve vídeos de Rocket League en inglés en YouTube. Lee los subtítulos de CoD en inglés. 20 minutos al día y en un mes notarás la diferencia.'
+        },
+        exercise: {
+          challenge: '🇬🇧 Gaming vocab en contexto',
+          body: 'Traduce estas frases de gaming al español de forma natural (no literal): 1) "I clutched the 1v3 situation in the last second." 2) "His rotation was off so we lost the aerial." 3) "The loadout with the suppressor is overpowered in close range." Luego usa una de las tres palabras subrayadas en una frase propia en inglés.',
+          hint: 'Clutch = ganar una situación imposible. Rotation = posicionamiento del equipo. Overpowered = demasiado poderoso / roto.',
+          answer: '1) "Gané la situación de 1 contra 3 en el último segundo." 2) "Su posicionamiento fue malo y perdimos el remate aéreo." 3) "La configuración con el silenciador está rota en distancias cortas." Frase propia ejemplo: "My rotation in Rocket League is getting better every game."',
+          xp: 50
+        }
+      },
+      {
+        title: 'Writing: describe a game character',
+        games: ['gta', 'cod'],
+        explanation: {
+          game: 'Escribir en inglés sobre algo que conoces profundamente es mucho más fácil que escribir sobre algo que no te interesa. Un personaje del GTA o de CoD que conoces de memoria es el mejor tema para practicar.',
+          school: 'Los ejercicios de writing piden describir personas o situaciones con vocabulario variado, conectores y estructura clara: introducción, desarrollo, conclusión.',
+          key: '<strong>Conectores útiles para writing:</strong> However (sin embargo), Moreover (además), On the other hand (por otro lado), Therefore (por lo tanto), Despite (a pesar de).'
+        },
+        exercise: {
+          challenge: '✍️ Write about your favourite character',
+          body: 'Write 5-6 sentences in English describing a character from GTA, CoD or Rocket League (yes, you can describe your car). Include: what they look like, what they want, what makes them interesting, and one thing you would change about them. Use at least 2 connectors.',
+          hint: 'Start with: "One of my favourite characters is..." Then use "Moreover" to add something. Use "However" to introduce a contrast.',
+          answer: 'Ejemplo: "One of my favourite characters is Trevor Philips from GTA V. He is a middle-aged man with an unpredictable and violent personality. However, despite his chaotic behaviour, he is deeply loyal to the people he cares about. Moreover, his humour makes him one of the most memorable characters in any game. I find him interesting because he is completely honest about who he is. If I could change one thing, I would give him more moments of genuine peace."',
+          xp: 60
+        }
+      }
+    ]
+  },
+
+  // ── EDUCACIÓN FÍSICA ───────────────────────────────────
+  {
+    id: 'efisica', name: 'Educación Física', icon: '⚡', badge: 'NA · La más fácil de remontar',
+    badgeClass: 'badge-na',
+    topics: [
+      {
+        title: 'Por qué el cuerpo necesita movimiento',
+        games: ['rocket', 'cod'],
+        explanation: {
+          game: 'Los mejores jugadores de Rocket League y CoD pro tienen rutinas físicas. Sentarse muchas horas seguidas tensa la espalda, el cuello y las muñecas. Los pros hacen estiramientos, entrena la vista y cuidan la postura. Faker (League of Legends), Scump (CoD) y los jugadores de RLCS hablan de esto abiertamente.',
+          school: 'El temario de Ed. Física incluye el sistema muscular, los beneficios del ejercicio (cardiovascular, muscular, mental) y hábitos de vida saludable. No necesitas ser atleta para entenderlo.',
+          key: '<strong>Conexión real:</strong> El ejercicio físico mejora la concentración y los reflejos. Los estudios con gamers muestran que 20-30 minutos de actividad física antes de jugar mejoran el rendimiento en juego. No es una contradicción, es sinergía.'
+        },
+        exercise: {
+          challenge: '🏃 Diseña tu rutina gamer-fit',
+          body: 'Diseña una rutina de 15 minutos antes de una sesión de gaming que mejore tu rendimiento. Incluye: 2 ejercicios cardiovasculares (para activar la circulación), 2 estiramientos (para cuello/muñecas) y 1 ejercicio de concentración. Explica brevemente por qué cada uno ayuda al gaming.',
+          hint: 'Cardiovascular: jumping jacks, sentadillas. Estiramientos: rotación de cuello, estiramiento de muñeca. Concentración: respiración profunda, enfoque visual.',
+          answer: 'Rutina gamer-fit: 1) 30 jumping jacks (activa la circulación y sube el oxígeno al cerebro, mejora reflejos). 2) 20 sentadillas (activa las piernas que llevan horas paradas, mejora postura). 3) Rotación de cuello 10 veces cada lado (libera tensión que acumulas mirando la pantalla). 4) Estiramiento de muñecas 30 segundos cada mano (previene el síndrome del túnel carpiano, muy común en gamers). 5) 10 respiraciones profundas y lentas (activa el sistema parasimpático, baja la ansiedad y mejora la concentración).',
+          xp: 55
+        }
+      },
+      {
+        title: 'Deportes colectivos y trabajo en equipo',
+        games: ['rocket', 'cod'],
+        explanation: {
+          game: 'Rocket League en 3v3 y CoD en modo escuadra son deportes de equipo con roles definidos: hay quien ataca, quien defiende, quien da soporte. La rotación en Rocket League (cada jugador ocupa la posición correcta para no chocarse) es exactamente la misma lógica que la táctica en deportes colectivos como el baloncesto o el fútbol.',
+          school: 'Ed. Física evalúa la participación en deportes colectivos, el respeto a las reglas y la cooperación. No es sobre ser el mejor atleta sino sobre participar y colaborar.',
+          key: '<strong>Eres ya un jugador de equipo.</strong> La rotación en Rocket League, el callout en CoD, cubrir al compañero... eso es exactamente lo que se trabaja en los deportes colectivos del cole.'
+        },
+        exercise: {
+          challenge: '🚀 Análisis táctico: traslada Rocket League al deporte',
+          body: 'En Rocket League hay tres roles básicos: atacante (va a por la pelota), centrocampista (apoya) y portero (defiende el goal). Elige un deporte que se practique en clase de Ed. Física y describe cómo se corresponden esos tres roles con los roles del deporte elegido. ¿Qué habilidades comparten?',
+          hint: 'Baloncesto: base/alero/pívot. Fútbol: delantero/centrocampista/portero. Las habilidades de comunicación, anticipación y posicionamiento son iguales en ambos contextos.',
+          answer: 'Ejemplo con baloncesto: El atacante de Rocket League = delantero en baloncesto, ambos buscan la anotación y necesitan velocidad de reacción. El centrocampista = base/alero, ambos conectan defensa y ataque y necesitan visión de juego. El portero = pívot defensivo, ambos protegen la zona propia y necesitan anticipación. Las habilidades compartidas son: comunicación verbal, rotación posicional, anticipación del movimiento del rival y confianza en los compañeros.',
+          xp: 60
+        }
+      }
+    ]
+  },
+
+  // ── LATÍN ──────────────────────────────────────────────
+  {
+    id: 'latin', name: 'Latín', icon: '🏛', badge: 'AS · Satisfactori',
+    badgeClass: 'badge-as',
+    topics: [
+      {
+        title: 'Vocabulario latino en los videojuegos',
+        games: ['cod', 'gta'],
+        explanation: {
+          game: 'El latín está por todas partes en los videojuegos sin que lo notes. "Animus" (alma, mente) es el nombre del sistema de Assassin\'s Creed. "Requiescat in pace" (descanse en paz) es la frase icónica de la saga. En CoD los rangos militares tienen origen latino: "Miles" = soldado. "Capitán" viene de "caput" = cabeza. "Sergeant" viene de "servire" = servir.',
+          school: 'El latín en 4º ESO pide traducción básica de frases simples y conocimiento de la cultura romana: sistema político, vida cotidiana, legado. La parte de cultura (en la que ya tienes AS) es la más accesible.',
+          key: '<strong>El latín no está muerto, está por todas partes.</strong> "Per aspera ad astra" (por el esfuerzo hasta las estrellas) es el lema de muchos equipos. "Veni, vidi, vici" (llegué, vi, vencí) de Julio César lo has visto en mil lugares. Eso es cultura latina viva.'
+        },
+        exercise: {
+          challenge: '🏛 Latín en tu mundo',
+          body: 'Encuentra 5 palabras o frases latinas que uses o hayas visto en videojuegos, películas, series o la vida cotidiana. Para cada una escribe: la palabra/frase en latín, qué significa literalmente, y dónde la has visto.',
+          hint: 'Pistas: "status" (posición), "versus" (contra), "extra" (fuera de), "bonus" (bueno), "ego" (yo), "maximum/minimum", "final" (límite), "video" (veo).',
+          answer: 'Ejemplos: 1) "Versus" — literalmente "girado hacia" → lo veo en todos los títulos de lucha y deportivos (Messi vs Ronaldo). 2) "Status" — posición, estado → "status del personaje" en cualquier RPG. 3) "Maximum" — el más grande → "max level", "maximizar estadísticas". 4) "Video" — yo veo → el nombre de la tecnología de vídeo viene del latín. 5) "Bonus" — bueno → puntos extra en cualquier juego.',
+          xp: 45
+        }
+      },
+      {
+        title: 'La civilización romana: política y sociedad',
+        games: ['gta'],
+        explanation: {
+          game: 'El Imperio Romano funcionaba como una organización criminal muy sofisticada: el Emperador tenía el poder absoluto, el Senado asesoraba (o intentaba resistir), los gobernadores de provincia eran como jefes de zona, y el ejército garantizaba que nadie se rebelase. El GTA tiene exactamente esta estructura de poder.',
+          school: 'La organización política romana: República (con Senado, cónsules, tribunos) vs Imperio (con Emperador). La sociedad: patricios (élite), plebeyos (ciudadanos comunes), esclavos. Es contenido directo del examen.',
+          key: '<strong>República → Imperio = el personaje que pasa de colaborador a jefe total.</strong> Julio César cruzó el Rubicón (punto de no retorno) igual que cuando en el GTA un personaje decide ir contra todos. Hay un momento en que ya no hay vuelta atrás.'
+        },
+        exercise: {
+          challenge: '🏛 Organigrama del poder romano',
+          body: 'Dibuja (con texto, no hace falta dibujar) el organigrama del poder en la Roma republicana y luego en el Imperio. ¿Qué cambió? ¿Qué ganó Roma con el Imperio? ¿Qué perdió? Responde en 4-6 líneas.',
+          hint: 'República: dos cónsules al mando (duran 1 año), Senado (asesora y controla), Tribunos de la plebe (defienden al pueblo). Imperio: un Emperador con poder total, Senado sin poder real, ejército leal al Emperador.',
+          answer: 'República: Dos Cónsules (poder ejecutivo, 1 año) → Senado (poder legislativo, patricio) → Magistraturas (pretores, censores, tribunos). Poder dividido y limitado en el tiempo. Imperio: Emperador (poder total, vitalicio) → Senado (papel simbólico) → Ejército (base real del poder). Con el Imperio Roma ganó eficiencia en la toma de decisiones, expansión territorial más rápida y estabilidad en períodos de paz. Perdió la participación ciudadana, el control del poder y la protección contra los gobernantes corruptos o incompetentes.',
+          xp: 65
+        }
+      }
+    ]
+  },
+
+  // ── VALORES CÍVICOS ────────────────────────────────────
+  {
+    id: 'valores', name: 'Valores Cívicos y Éticos', icon: '⚖️', badge: 'NA · No Assolit',
+    badgeClass: 'badge-na',
+    topics: [
+      {
+        title: 'Ética y toma de decisiones',
+        games: ['gta', 'cod'],
+        explanation: {
+          game: 'El GTA está lleno de decisiones éticas: ¿ayudas al personaje aunque sea un criminal? ¿Qué justifica la violencia? ¿El fin justifica los medios? En CoD constantemente hay misiones donde las órdenes chocan con la moral del personaje. La misión "No Russian" de CoD MW2 es uno de los debates éticos más discutidos en la historia de los videojuegos.',
+          school: 'La asignatura trabaja dilemas morales, la diferencia entre ética y moral, los derechos humanos y la convivencia. No pide que tengas las respuestas correctas, pide que argumentes tu posición.',
+          key: '<strong>Un dilema ético no tiene respuesta perfecta.</strong> Lo que evalúa el profe es que identifiques el conflicto de valores, que consideres ambos lados y que argumentes tu posición con razones, no solo con "me parece bien o mal".'
+        },
+        exercise: {
+          challenge: '⚖️ El dilema de la misión',
+          body: 'Dilema: En CoD recibes la orden de destruir un edificio enemigo, pero sabes que dentro hay civiles. Seguir la orden salva a tu escuadrón. Desobedecer puede costar la misión y vidas de soldados aliados. Responde: ¿Qué harías? ¿Por qué? ¿Qué valor estás priorizando? ¿Qué pierdes si eliges cada opción? Escribe 5-6 líneas.',
+          hint: 'No hay respuesta correcta. El profe quiere ver que identificas los dos valores en conflicto (salvar al escuadrón vs proteger civiles inocentes), que reconoces lo que se pierde en cada decisión y que argumentas con razones.',
+          answer: 'Ejemplo de respuesta: "Desobedecería la orden porque la protección de civiles inocentes está por encima de cualquier objetivo militar. El valor que priorizo es la dignidad humana, que no puede sacrificarse ni siquiera en tiempos de guerra. Siguiendo la orden, ganaría la misión tácticamente pero perdería algo irreparable: la posibilidad de justificar moralmente mis acciones. Desobedeciéndola, asumo las consecuencias militares pero mantengo la coherencia ética. Este dilema ilustra el conflicto entre la ética deontológica (hay cosas que nunca deben hacerse) y la consecuencialista (el resultado justifica el medio)."',
+          xp: 75
+        }
+      },
+      {
+        title: 'Derechos humanos y ciudadanía',
+        games: ['gta'],
+        explanation: {
+          game: 'El GTA critica constantemente las desigualdades del sistema: hay personajes que nacen sin oportunidades, policía que trata diferente a las personas según su barrio o apariencia, y un sistema judicial que funciona de manera distinta según tu dinero. Es una crítica social muy directa, aunque con mucho humor negro.',
+          school: 'La Declaración Universal de los Derechos Humanos (1948) establece derechos básicos para todas las personas. El temario pide conocer los derechos fundamentales y reflexionar sobre casos donde se vulneran.',
+          key: '<strong>Los 3 derechos más importantes para conocer:</strong> Derecho a la vida y seguridad (Art. 3), Prohibición de la esclavitud (Art. 4), Igualdad ante la ley (Art. 7). El GTA muestra constantemente cómo estos derechos se violan en la ficción — y en la realidad.'
+        },
+        exercise: {
+          challenge: '⚖️ Derechos en el GTA vs realidad',
+          body: 'Elige UNA situación del GTA (o de CoD) donde se viole claramente un derecho humano. Describe la situación, di qué artículo de los Derechos Humanos se está violando y da un ejemplo real del mundo actual donde ocurre algo similar. 4-5 líneas.',
+          hint: 'Ejemplos de situaciones: la policía del GTA actúa diferente según el barrio (igualdad ante la ley). Los personajes del GTA nacen sin acceso a educación ni trabajo (derecho al desarrollo). La violencia sin consecuencias (derecho a la vida).',
+          answer: 'En el GTA V, los personajes de los barrios pobres de Los Santos son constantemente vigilados y arrestados por la policía mientras los ricos del barrio de Rockford Hills hacen lo mismo sin consecuencias. Esto viola el Artículo 7 de la Declaración Universal (igualdad ante la ley y protección igual sin discriminación). En la realidad, estudios en EE.UU. y Europa documentan que las personas de barrios pobres o de determinadas etnias reciben condenas más severas por los mismos delitos que personas de mayor poder económico. El GTA lo exagera para hacer la crítica más visible, pero el problema real existe.',
+          xp: 70
+        }
+      }
+    ]
+  }
+];
+
+// ── STATE ────────────────────────────────────────────────
+let currentSubject = 'all';
+let shownHints = {};
+let shownAnswers = {};
+
+// ── FILTER ───────────────────────────────────────────────
+function filterSubject(id, btn) {
+  currentSubject = id;
+  document.querySelectorAll('.snav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSubjects();
+}
+
+// ── RENDER ───────────────────────────────────────────────
+function renderSubjects() {
+  const container = document.getElementById('subjects-container');
+  const filtered  = currentSubject === 'all' ? SUBJECTS : SUBJECTS.filter(s => s.id === currentSubject);
+
+  container.innerHTML = filtered.map(s => `
+    <div class="subject-section" data-subject="${s.id}">
+      <div class="subject-header">
+        <div class="subject-icon">${s.icon}</div>
+        <div class="subject-title-block">
+          <div class="subject-name">${s.name}</div>
+          <span class="subject-badge ${s.badgeClass}">${s.badge}</span>
+        </div>
+      </div>
+      ${s.topics.map((t, ti) => renderTopic(s.id, t, ti)).join('')}
+    </div>
+  `).join('');
+}
+
+function renderTopic(sid, t, ti) {
+  const key = `${sid}-${ti}`;
+  const gameTags = t.games.map(g => `<span class="tg-tag tg-${g}">${g==='gta'?'GTA V':g==='cod'?'Call of Duty':'Rocket League'}</span>`).join('');
+  return `
+    <div class="topic-card" id="tc-${key}">
+      <div class="topic-header" onclick="toggleTopic('${key}')">
+        <div class="topic-num">${String(ti+1).padStart(2,'0')}</div>
+        <div class="topic-info">
+          <div class="topic-title">${t.title}</div>
+          <div class="topic-games">${gameTags}</div>
+        </div>
+        <div class="topic-chevron" id="chev-${key}">▼</div>
+      </div>
+      <div class="topic-body" id="tb-${key}">
+        <div class="explanation">
+          <div class="exp-label game">🎮 En el juego</div>
+          <div class="exp-connect">
+            <div class="exp-side exp-game">${t.explanation.game}</div>
+            <div class="exp-arrow">→</div>
+            <div class="exp-side exp-school">
+              <div class="exp-label school" style="margin-bottom:6px;">📚 En el cole</div>
+              ${t.explanation.school}
+            </div>
+          </div>
+          <div class="exp-key">💡 ${t.explanation.key}</div>
+        </div>
+        <div class="exercise">
+          <div class="ex-label">⚡ Misión de práctica · +${t.exercise.xp} XP</div>
+          <div class="ex-challenge">${t.exercise.challenge}</div>
+          <div class="ex-body">${t.exercise.body}</div>
+          <textarea class="ex-answer-area" id="ans-${key}" placeholder="Escribe tu respuesta aquí..."></textarea>
+          <div class="ex-actions">
+            <button class="btn-hint"  onclick="showHint('${key}','${escJs(t.exercise.hint)}')">💡 Pista</button>
+            <button class="btn-check" onclick="showAnswer('${key}','${escJs(t.exercise.answer)}')">✓ Ver respuesta</button>
+          </div>
+          <div class="ex-feedback hint"   id="hint-${key}"></div>
+          <div class="ex-feedback answer" id="answer-${key}"></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleTopic(key) {
+  const body  = document.getElementById('tb-'+key);
+  const chev  = document.getElementById('chev-'+key);
+  const isOpen = body.classList.contains('open');
+  // close all
+  document.querySelectorAll('.topic-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.topic-chevron').forEach(c=>c.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); chev.classList.add('open'); }
+}
+
+function showHint(key, hint) {
+  const el = document.getElementById('hint-'+key);
+  el.innerHTML = '💡 <strong>Pista:</strong> ' + hint;
+  el.classList.add('show');
+}
+
+function showAnswer(key, answer) {
+  const el = document.getElementById('answer-'+key);
+  el.innerHTML = '✓ <strong>Respuesta modelo:</strong> ' + answer;
+  el.classList.add('show');
+}
+
+function escJs(s) {
+  return s.replace(/'/g,"&#39;").replace(/"/g,"&quot;").replace(/\n/g," ");
+}
+
+// ── BACK BUTTON ──────────────────────────────────────────
+document.querySelector('.back-btn').addEventListener('click', () => {
+  if (document.referrer) { history.back(); }
+  else { window.location.href = 'index.html'; }
+});
+
+// ── INIT ─────────────────────────────────────────────────
+renderSubjects();
+</script>
+</body>
+</html>
