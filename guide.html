@@ -151,7 +151,7 @@ h1 .t2{color:var(--cyan);text-shadow:0 0 28px rgba(0,229,255,0.4);}
 
 <!-- HERO -->
 <div class="hero">
-  <button class="back-btn" onclick="history.back()">← Volver a S.A.M.U.</button>
+  <button class="back-btn" onclick="window.location.href='index.html'">← Volver a S.A.M.U.</button>
   <div class="brand-codename">Guía de estudio · Samuel Adarme · 4º ESO</div>
   <h1><div class="t1">INTEL</div><div class="t2">GUIDE</div></h1>
   <p class="hero-sub">Lo que ya sabes en el juego, <strong>aplicado directamente al cole</strong>. Cada tema explicado desde tu mundo, con un ejercicio real para practicar.</p>
@@ -629,10 +629,7 @@ function escJs(s) {
 }
 
 // ── BACK BUTTON ──────────────────────────────────────────
-document.querySelector('.back-btn').addEventListener('click', () => {
-  if (document.referrer) { history.back(); }
-  else { window.location.href = 'index.html'; }
-});
+// El onclick del botón ya gestiona la navegación
 
 // ── INIT ─────────────────────────────────────────────────
 renderSubjects();
